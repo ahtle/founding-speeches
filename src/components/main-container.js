@@ -16,7 +16,8 @@ class MainContainer extends React.Component{
 
     componentDidMount(){
         //this.props.actions.loadPresidents()
-        fetch('https://guarded-peak-56596.herokuapp.com/presidents', {mode: 'no-cors'})
+        //https://guarded-peak-56596.herokuapp.com/presidents
+        fetch('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1', {mode: 'no-cors'})
             .then((data) => {
                 console.log(data);
             })
