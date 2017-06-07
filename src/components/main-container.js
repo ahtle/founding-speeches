@@ -17,13 +17,16 @@ class MainContainer extends React.Component{
     componentDidMount(){
         //this.props.actions.loadPresidents()
         //https://guarded-peak-56596.herokuapp.com/presidents
-        fetch('http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b1b15e88fa797225412429c1c50c122a1', {mode: 'no-cors'})
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
+        
+        fetch('https://guarded-peak-56596.herokuapp.com/presidents')
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log(responseJson)
+            return responseJson.movies;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 
         console.log('main-container did mount');
     };
