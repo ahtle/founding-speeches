@@ -1,5 +1,3 @@
-import * as action from '../actions';
-
 const initialState = {
     presidents: [{
         id: 1,

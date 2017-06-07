@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleSpeechForm } from '../actions';
 import './styles/detail-container.css';
 
 import DetailBanner from './detail-banner';
@@ -17,8 +16,7 @@ class DetailContainer extends React.Component {
         };
     }
 
-    toogleAddSpeechForm(e) {
-        e.preventDefault();
+    toogleAddSpeechForm() {
         this.setState({
             isSpeechFormVisible: !this.state.isSpeechFormVisible
         });
@@ -37,9 +35,9 @@ class DetailContainer extends React.Component {
                 <DetailBanner banner={props.president.banner} date={props.president.date} name={props.president.name} />
                 <section className="detail-speeches-list">
                     {speechesList}
-                    <button onClick={e => this.toogleAddSpeechForm(e)} className="btn-add-speech">Add a speech</button>
+                    <button onClick={() => this.toogleAddSpeechForm()} className="btn-add-speech">Add a speech</button>
                 </section>
-                {isSpeechFormVisible && <AddSpeechForm />}
+                {isSpeechFormVisible && <AddSpeechForm onClose={() => this.toogleAddSpeechForm()}/>}
             </section>
         );
     }

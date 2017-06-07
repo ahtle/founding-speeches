@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from './card';
-import {bindActionCreators} from 'redux';
+//import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as actions from '../actions/';
+//import * as actions from '../actions/';
 
 //const mainActions = bindActionCreators(main);
 
