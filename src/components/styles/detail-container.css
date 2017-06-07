@@ -1,0 +1,14 @@
+.detail-speeches-list {
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 30px 0 30px;
+}
+
+.btn-add-speech {
+    margin: 20pt auto;
+    font-size: 20pt;
+    padding: 5px 10px 5px 10px;
+    background-color: #ec560a;
+    color: #fff;
+    border-radius: 10pt;
+}

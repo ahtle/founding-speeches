@@ -1,0 +1,19 @@
+article {
+    border-top: 1px solid lightgrey;
+    padding: 20px 0 20px 0;
+}
+
+p {
+    cursor: pointer;
+    position: relative;
+}
+
+span {
+    color: #ec560a;
+    font-size: 18pt;
+}
+
+.date {
+    position: absolute;
+    right: 0;
+}

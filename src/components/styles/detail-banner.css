@@ -1,0 +1,34 @@
+.detail-banner-container {
+    position: relative;
+    display: flex;
+    height: 550px;
+    background-color: #0f355a;
+    color: #fff;
+}
+
+.banner {
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.detail-container {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+}
+
+.detail {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+h3 {
+    font-size: 30pt;
+}
+
+h1 {
+    font-size: 40pt;
+}
+
+
