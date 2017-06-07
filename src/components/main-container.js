@@ -16,7 +16,7 @@ class MainContainer extends React.Component{
 
     componentDidMount(){
         //this.props.actions.loadPresidents()
-        fetch('https://founding-speeches.herokuapp.com/presidents', {mode: 'no-cors'})
+        fetch('https://guarded-peak-56596.herokuapp.com/presidents', {mode: 'no-cors'})
             .then((data) => {
                 console.log(data);
             })
