@@ -7,7 +7,6 @@ function loadPresidentsRequest(){
 
 function loadPresidentsSuccess(list){
     console.log('LOAD_PRESIDENTS_SUCCESS');
-    console.log(list);
     return {
         type: 'LOAD_PRESIDENTS_SUCCESS',
         payload: list
@@ -25,16 +24,18 @@ export function loadPresidentsFailure(error){
 // action creator
 export function loadPresidents(){
     return function(dispatch, getState){
-        console.log('loadPresidents()');
 
         dispatch(loadPresidentsRequest());
 
-        fetch('/presidents')
-        .then((list)=>{
-            dispatch(loadPresidentsSuccess(list));
-        })
-        .catch((error) => {
-            dispatch(loadPresidentsFailure(error));
-        });
+        fetch('https://founding-speeches-server.herokuapp.com/presidents')
+            .then((response) => response.json())
+            .then((presidents) => {
+                return dispatch(loadPresidentsSuccess(presidents));
+            })
+            .catch((error) => {
+                console.error(error);
+                return dispatch(loadPresidentsFailure(error));
+            });
+
     }
 }

@@ -1,42 +1,28 @@
 import React from 'react';
 import Card from './card';
-//import {bindActionCreators} from 'redux';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-//import * as actions from '../actions/';
-
-//const mainActions = bindActionCreators(main);
+import * as actions from '../actions/';
 
 class MainContainer extends React.Component{
     constructor(props, context){
         super(props);
 
-        //context.store.dispatch;
-        //this.mainActions = bindActionCreators(actions, context.store.dispatch);
     }
 
     componentDidMount(){
-        //this.props.actions.loadPresidents()
-        //https://guarded-peak-56596.herokuapp.com/presidents
-        
-        fetch('https://guarded-peak-56596.herokuapp.com/presidents')
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(responseJson)
-            return responseJson.movies;
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-
-        console.log('main-container did mount');
+        this.props.actions.loadPresidents();
+        setTimeout(() => {
+            console.log(this.props.presidents);
+        }, 1500)
     };
 
     render(){
         const props = this.props;
         let cards;
         cards = props.presidents.map((president) => {
-            return <Card history={props.history} img={president.img} date={president.date}
-                name={president.name} snippet={president.snippet} key={president.id} id={president.id} />
+            return <Card history={props.history} img={president.thumbnail} startYear={president.startYear} endYear={president.endYear}
+                name={president.name} snippet={president.snippet} key={president.presId} id={president.presId} />
         });
 
         return (
@@ -57,11 +43,11 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch, props) => {
-//     return {
-//         actions: bindActionCreators(actions, dispatch),
-//         dispatch
-//     };
-// };
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        actions: bindActionCreators(actions, dispatch),
+        dispatch
+    };
+};
 
-export default connect(mapStateToProps)(MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

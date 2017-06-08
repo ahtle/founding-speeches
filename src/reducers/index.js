@@ -1,13 +1,5 @@
 const initialState = {
-    presidents: [{
-        id: 1,
-        name: 'George Washington',
-        date: '1789 - 1797',
-        img: 'thumb1.jpg',
-        banner: 'banner1.jpeg',
-        snippet: 'If the freedom of speech is taken away then dumb and silent we may be led, like sheep to the slaughter.',
-        speeches: [1001,1002,1003]
-    }],
+    presidents: [],
     transcripts: []
 };
 
