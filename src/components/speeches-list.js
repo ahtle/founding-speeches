@@ -5,7 +5,7 @@ import './styles/speeches-list.css';
 export default function SpeechesList(props){
 
     function handleOnClick(){
-        props.history.push(`/transcript/${props.id}`);
+        props.history.push(`/transcript/${props.presId}/${props.id}`);
     }
 
     return (

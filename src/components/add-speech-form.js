@@ -1,36 +1,68 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import moment from 'moment';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/';
 import './styles/add-speech-form.css';
 
-export function AddSpeechForm(props){
+class AddSpeechForm extends React.Component {
+    constructor(props, context){
+        super(props);
 
-    function submitForm(e){
-        e.preventDefault();
-        console.log('submit pressed');
     }
 
-    function onClose(e){
+    submitForm(e){
         e.preventDefault();
-        if(props.onClose){
-            props.onClose();
+
+        let query = {
+            presId: this.props.presId,
+            date: moment(this.date.value)._d,
+            title: this.title.value.trim(),
+            text: this.text.value.trim().replace(/(?:\r\n|\r|\n)/g, '<br />')
+        };
+        
+        this.props.actions.postNewTranscript(query);
+
+        this.onClose();
+    }
+
+    onClose(){
+        if(this.props.onClose){
+            this.props.onClose();
         }
     }
 
-    return(
-        <section className="add-form-container">
-            <form onSubmit={e => submitForm(e)}>
-                <div className="add-form-div" >
-                    <input className="add-form-title" type="text" placeholder="title"/>
-                    <input className="add-form-date" type="date"/>
-                </div>
-                <textarea name="transcript" id="transcript" cols="30" rows="10"></textarea>
-                <div className="add-form-div" >
-                    <input className="add-form-submit" type="submit"/>
-                    <button className="add-form-cancel" onClick={e => onClose(e)}>Cancel</button>
-                </div>
-            </form>
-        </section>
-    );
+    render(){
+
+        return(
+            <section className="add-form-container">
+                <form onSubmit={e => this.submitForm(e)}>
+                    <div className="add-form-div" >
+                        <input className="add-form-title" type="text" placeholder="title" ref={input => this.title = input} required />
+                        <input className="add-form-date" type="date" ref={input => this.date = input} required/>
+                    </div>
+                    <textarea name="transcript" id="transcript" cols="30" rows="10" ref={input => this.text = input} required></textarea>
+                    <div className="add-form-div" >
+                        <input className="add-form-submit" type="submit"/>
+                        <button className="add-form-cancel" onClick={() => this.onClose()}>Cancel</button>
+                    </div>
+                </form>
+            </section>
+        );
+    }
 };
 
-export default connect()(AddSpeechForm);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        actions: bindActionCreators(actions, dispatch),
+        dispatch
+    };
+}
+
+const mapStateToProps = (state, props) => {
+    return {
+        transcripts: state.transcripts 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddSpeechForm);

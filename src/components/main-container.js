@@ -14,7 +14,7 @@ class MainContainer extends React.Component{
         this.props.actions.loadPresidents();
         setTimeout(() => {
             console.log(this.props.presidents);
-        }, 1500)
+        }, 3000)
     };
 
     render(){

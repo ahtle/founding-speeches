@@ -1,11 +1,13 @@
 const initialState = {
     presidents: [],
-    transcripts: []
+    transcripts: [],
+    watson: {}
 };
 
 export default (state = initialState, action) => {
 
     switch(action.type){
+        // load president
         case 'LOAD_PRESIDENTS_REQUEST':
             return {
                 ...state,
@@ -22,6 +24,64 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false,
                 presidents: action.payload
+            };
+
+        // load transcripts
+
+        case 'LOAD_PRESIDENT_TRANSCRIPTS_REQUEST':
+            return {
+                ...state,
+                loading: true
+            };
+        case 'LOAD_PRESIDENT_TRANSCRIPTS_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                transcripts: action.payload
+            };
+        case 'LOAD_PRESIDENT_TRANSCRIPTS_FAILURE':
+            return {
+                ...state,
+                loading: false,
+                transcripts: action.payload
+            };
+
+        // post new transcript
+        case 'POST_TRANSCRIPT_REQUEST':
+            return {
+                ...state,
+                loading: true
+            };
+        case 'POST_TRANSCRIPT_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                transcripts: action.payload
+            };
+        case 'POST_TRANSCRIPT_FAILURE':
+            return {
+                ...state,
+                loading: false,
+                transcripts: action.payload
+            };
+
+        // get Watson insight
+        case 'WATSON_INSIGHT_REQUEST':
+            return {
+                ...state,
+                loading: true
+            };
+        case 'WATSON_INSIGHT_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                watson: action.payload
+            };
+        case 'WATSON_INSIGHT_FAILURE':
+            return {
+                ...state,
+                loading: false,
+                watson: action.payload
             };
     }
 

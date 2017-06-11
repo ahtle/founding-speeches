@@ -9,7 +9,7 @@ export default function DetailBanner(props){
             <img className="banner" src={`https://raw.githubusercontent.com/anhhtle/Founding-Speeches/master/public/img/banners/${props.banner}`} alt="banner"/>
             <div className="detail-container">
                 <div className="detail">
-                    <h3>{props.date}</h3>
+                    <h3>{props.startYear} - {props.endYear}</h3>
                     <h1>{props.name}</h1>
                 </div>
             </div>

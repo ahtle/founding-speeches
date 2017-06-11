@@ -14,7 +14,7 @@ export default function App() {
             <Header />
             <Route exact path="/" component={MainContainer}/>
             <Route exact path="/detail/:presid" component={DetailContainer} />
-            <Route exact path="/transcript/:speechid" component={SpeechTranscript} />
+            <Route exact path="/transcript/:presid/:speechid" component={SpeechTranscript} />
         </div>
     );
 };
