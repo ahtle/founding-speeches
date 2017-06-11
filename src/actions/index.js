@@ -155,8 +155,14 @@ export function getWatsonInsight(text){
             },
             body: JSON.stringify(text)
         })
-        .then(data => getWatsonInsightSuccess(data))
-        .catch(error => getWatsonInsightFailure(error));
+        .then(data => {
+            console.log(data);
+            getWatsonInsightSuccess(data)
+        })
+        .catch(error => {
+            console.log("error: " + error);
+            getWatsonInsightFailure(error)}
+        );
 
     }
 }
@@ -164,7 +170,6 @@ export function getWatsonInsight(text){
 // export function postNewTranscript(transcript){
 //     return function(dispatch, getState){
 //         dispatch(postTranscriptRequest());
-
 //         fetch('https://founding-speeches-server.herokuapp.com/transcripts/', {
 //             method: 'POST',
 //             headers: {
