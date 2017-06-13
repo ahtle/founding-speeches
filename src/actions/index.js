@@ -129,10 +129,10 @@ function getWatsonInsightRequest(){
     }
 }
 
-function getWatsonInsightSuccess(data){
+function getWatsonInsightSuccess(watson){
     return {
         type: 'WATSON_INSIGHT_SUCCESS',
-        payload: data
+        payload: watson
     }
 }
 
@@ -147,37 +147,25 @@ function getWatsonInsightFailure(error){
 export function getWatsonInsight(text){
     return function(dispatch, getState){
         dispatch(getWatsonInsightRequest());
+        var fetchOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors',
+                cache: 'default',
+                body: JSON.stringify({text: text})
+            };
 
-        fetch('https://founding-speeches-server.herokuapp.com/watson/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(text)
+        var url = 'https://founding-speeches-server.herokuapp.com/watson/';
+
+        fetch(url, fetchOptions)
+        .then(response => response.json())
+        .then(watson => {
+            console.log(watson);
+            return getWatsonInsightSuccess(watson);
         })
-        .then(data => {
-            console.log(data);
-            getWatsonInsightSuccess(data)
-        })
-        .catch(error => {
-            console.log("error: " + error);
-            getWatsonInsightFailure(error)}
-        );
+        .catch(error => getWatsonInsightFailure(error));
 
     }
 }
-
-// export function postNewTranscript(transcript){
-//     return function(dispatch, getState){
-//         dispatch(postTranscriptRequest());
-//         fetch('https://founding-speeches-server.herokuapp.com/transcripts/', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(transcript)
-//         })
-//         .then(data => postTranscriptSuccess(data))
-//         .catch(error => postTranscriptFailure(error));
-//     }
-// }

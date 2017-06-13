@@ -1,7 +1,7 @@
 const initialState = {
     presidents: [],
     transcripts: [],
-    watson: {}
+    watson: []
 };
 
 export default (state = initialState, action) => {

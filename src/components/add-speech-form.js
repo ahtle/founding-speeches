@@ -18,7 +18,7 @@ class AddSpeechForm extends React.Component {
             presId: this.props.presId,
             date: moment(this.date.value)._d,
             title: this.title.value.trim(),
-            text: this.text.value.trim().replace(/(?:\r\n|\r|\n)/g, '<br />')
+            text: this.text.value.trim()
         };
         
         this.props.actions.postNewTranscript(query);
