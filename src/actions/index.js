@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-//***** load presidents from server and add to state *******/
+//***** load presidents from server and add to state ********/
 
 function loadPresidentsRequest(){
     return {
