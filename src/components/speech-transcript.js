@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import * as actions from '../actions/';
-import PersonalityInsightsV3 from 'watson-developer-cloud/personality-insights/v3';
 import './styles/speech-transcript.css';
 
 class SpeechTranscript extends React.Component{
