@@ -28,7 +28,7 @@ export function loadPresidents(){
 
         dispatch(loadPresidentsRequest());
 
-        fetch('https://founding-speeches-server.herokuapp.com/presidents')
+        fetch('https://founding-speeches-server.herokuapp.com/api/v1/presidents')
             .then((response) => response.json())
             .then((presidents) => {
                 return dispatch(loadPresidentsSuccess(presidents));
@@ -110,7 +110,7 @@ export function postNewTranscript(transcript){
     return function(dispatch, getState){
         dispatch(postTranscriptRequest());
 
-        fetch('https://founding-speeches-server.herokuapp.com/transcripts/', {
+        fetch('https://founding-speeches-server.herokuapp.com/api/v1/transcripts/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -157,7 +157,7 @@ export function getWatsonInsight(text){
                 body: JSON.stringify({text: text})
             };
 
-        var url = 'https://founding-speeches-server.herokuapp.com/watson/';
+        var url = 'https://founding-speeches-server.herokuapp.com/api/v1/watson/';
 
         fetch(url, fetchOptions)
         .then(response => response.json())
