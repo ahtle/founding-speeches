@@ -1,5 +1,5 @@
 import moment from 'moment';
-
+import { parseJSON, checkHttpStatus } from '../utils';
 //***** load presidents from server and add to state ********/
 
 function loadPresidentsRequest(){
@@ -69,11 +69,12 @@ export function loadPresidentTranscripts(url){
         dispatch(loadPresidentTranscriptsRequest());
 
         fetch(url)
-            .then((response) => response.json())
+            .then(checkHttpStatus)
+            .then(parseJSON)
             .then((transcripts) => {
-                transcripts.forEach(transcript => {
-                    transcript.date = moment(transcript.date.substring(0,10)).format('LL');
-                })
+                // transcripts.forEach(transcript => {
+                //     transcript.date = moment(transcript.date.substring(0,10)).format('LL');
+                // });
                 return dispatch(loadPresidentTranscriptsSuccess(transcripts));
             })
             .catch((error) => {
@@ -117,8 +118,12 @@ export function postNewTranscript(transcript){
             },
             body: JSON.stringify(transcript)
         })
-        .then(response => response.json())
-        .then(data => dispatch(postTranscriptSuccess(data)))
+        .then(checkHttpStatus)
+        .then(parseJSON)
+        .then(data => {
+          debugger;
+          dispatch(postTranscriptSuccess(data));
+        })
         .catch(error => dispatch(postTranscriptFailure(error)));
     }
 }
