@@ -117,8 +117,9 @@ export function postNewTranscript(transcript){
             },
             body: JSON.stringify(transcript)
         })
-        .then(data => postTranscriptSuccess(data))
-        .catch(error => postTranscriptFailure(error));
+        .then(response => response.json())
+        .then(data => dispatch(postTranscriptSuccess(data)))
+        .catch(error => dispatch(postTranscriptFailure(error)));
     }
 }
 
@@ -163,9 +164,10 @@ export function getWatsonInsight(text){
         .then(response => response.json())
         .then(watson => {
             console.log(watson);
-            return getWatsonInsightSuccess(watson);
+            //getWatsonInsightSuccess(watson);
+            dispatch(getWatsonInsightSuccess(watson));
         })
-        .catch(error => getWatsonInsightFailure(error));
+        .catch(error => dispatch(getWatsonInsightFailure(error)));
 
     }
 }
