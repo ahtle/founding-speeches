@@ -1,0 +1,21 @@
+.watson-container {
+    width: 1000px;
+    background-color: #E5E5E5;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.watson-container > h3{
+    color: #ec560a;
+    font-size: 25pt;
+    margin: 20px 0 10px;
+}
+
+.word-count {
+    font-size: 16pt;
+}
+
+.analysis-strength {
+    color: #00b4a0;
+    font-size: 16pt;
+}

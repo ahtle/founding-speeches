@@ -1,7 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 
-import './styles/watson-d3-graph.css';
+import './styles/watson-graph.css';
 
 class WatsonGraph extends React.Component {
     constructor(props, context) {

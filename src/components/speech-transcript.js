@@ -15,7 +15,6 @@ class SpeechTranscript extends React.Component{
 
         setTimeout(() => {
             console.log(this.props.watson);
-            console.log(this.props);
         }, 3000)
     }
 
