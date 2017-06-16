@@ -13,10 +13,11 @@ class AddSpeechForm extends React.Component {
 
     submitForm(e){
         e.preventDefault();
+        let date = moment.utc(this.date.value)._d
 
         let query = {
             presId: this.props.presId,
-            date: moment(this.date.value)._d,
+            date,
             title: this.title.value.trim(),
             text: this.text.value.trim()
         };

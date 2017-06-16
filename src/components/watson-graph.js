@@ -37,9 +37,15 @@ class WatsonGraph extends React.Component {
         this.setContext();
     }
 
+    handleClick(text){
+        if(this.props.changeText)
+            this.props.changeText(text);
+    }
+
     // svg canvas
     setContext() {
-        let data = this.state.values.sort((a, b) => { return a.percentile - b.percentile;});;
+
+        let data = this.props.data;
 
         //set up svg using margin conventions - we'll need plenty of room on the left for labels
         var margin = {
@@ -49,7 +55,7 @@ class WatsonGraph extends React.Component {
             left: 110
         };
 
-        var width = 500 - margin.left - margin.right,
+        var width = 490 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
         const svg = d3.select(this.refs.svg).append('svg')
@@ -59,7 +65,7 @@ class WatsonGraph extends React.Component {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var x = d3.scaleLinear()
-            .range([0, width + 50])
+            .range([0, 350])
             .domain([0, 100]);
 
         var y = d3.scaleBand()
@@ -70,21 +76,26 @@ class WatsonGraph extends React.Component {
         var yAxis = d3.axisLeft(y);
 
         svg.append("g")
-            .attr("class", "y axis")
+            .attr("class", "y-axis")
             .call(yAxis)
-
+        
+        //click on axis tick
+        svg.selectAll("text")
+            .on("click", (d) => this.handleClick(d));
+        
+        //make bars
         var bars = svg.selectAll(".bar")
             .data(data)
             .enter()
             .append("g")
 
-        //append rects
         bars.append("rect")
             .attr("class", "bar")
             .attr("y", (d) => {return y(d.name);})
             .attr("height", y.bandwidth())
             .attr("x", 0)
-            .attr("width", (d) => {return x(d.percentile);});
+            .attr("width", (d) => {return x(d.percentile);})
+            .on("click", (d) => this.handleClick(d.name));
 
         //add a value label to the right of each bar
         bars.append("text")

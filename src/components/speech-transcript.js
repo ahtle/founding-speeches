@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import * as actions from '../actions/';
+import { formatDate } from '../utils';
 import './styles/speech-transcript.css';
 
 class SpeechTranscript extends React.Component{
@@ -27,7 +28,7 @@ class SpeechTranscript extends React.Component{
             <div className="transcript-container">
                 <button onClick={() => this.watsonAPI(props.speech.text)}>Watson</button>
                 <p><Link to={`/detail/${props.match.params.presid}`}>{props.president.name} Precidency</Link></p>
-                <h3>{props.speech.date}: {props.speech.title}</h3>
+                <h3>{formatDate(props.speech.date)}: {props.speech.title}</h3>
                 <h4>Transcript</h4>
                 <p className="transcript-text" dangerouslySetInnerHTML={{__html: textFormatted}} />
             </div>

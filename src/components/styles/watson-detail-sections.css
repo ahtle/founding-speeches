@@ -1,0 +1,32 @@
+.watson-section-container{
+    background-color: #fff;
+    border: 2px solid lightgrey;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.graph-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.graph-container-header:hover{
+    cursor: pointer;
+}
+
+.watson-section-infobox{
+    width: 100%;
+    padding: 20px;
+    border-left: 1px solid lightgrey;
+}
+
+.infobox-header{
+    text-align: center;
+    color: #000;
+    padding: 10px;
+    font-size: 13pt;
+    border-bottom: 3px solid #ec560a;
+    margin-bottom: 40px;
+}

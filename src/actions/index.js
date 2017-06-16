@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { parseJSON, checkHttpStatus } from '../utils';
 //***** load presidents from server and add to state ********/
 
@@ -72,9 +71,6 @@ export function loadPresidentTranscripts(url){
             .then(checkHttpStatus)
             .then(parseJSON)
             .then((transcripts) => {
-                // transcripts.forEach(transcript => {
-                //     transcript.date = moment(transcript.date.substring(0,10)).format('LL');
-                // });
                 return dispatch(loadPresidentTranscriptsSuccess(transcripts));
             })
             .catch((error) => {
@@ -118,19 +114,12 @@ export function postNewTranscript(transcript){
             },
             body: JSON.stringify(transcript)
         })
-<<<<<<< HEAD
-        .then(response => response.json())
-        .then(data => postTranscriptSuccess(data))
-        .catch(error => postTranscriptFailure(error));
-=======
         .then(checkHttpStatus)
         .then(parseJSON)
         .then(data => {
-          debugger;
-          dispatch(postTranscriptSuccess(data));
+            dispatch(postTranscriptSuccess(data));
         })
         .catch(error => dispatch(postTranscriptFailure(error)));
->>>>>>> 00620d45348b20813c93bb96db7b97a3b5809596
     }
 }
 

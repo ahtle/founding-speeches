@@ -89,7 +89,9 @@ export default (state = initialState, action) => {
                 loading: false,
                 watson: action.payload
             };
+        
+        default:
+            return state;
     }
 
-    return state;
 }

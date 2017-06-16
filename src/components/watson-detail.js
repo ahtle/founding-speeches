@@ -1,5 +1,5 @@
 import React from 'react';
-import WatsonGraph from './watson-graph';
+import WatsonDetailSections from './watson-detail-sections';
 
 import './styles/watson-detail.css';
 
@@ -241,7 +241,9 @@ class WatsonDetail extends React.Component{
         const word_count = this.state.word_count;
 
         let analysisStrength = 'Weak Analysis';
-        if(word_count >= 1200 && word_count < 6000)
+        if(word_count >= 1200 && word_count < 3500)
+            analysisStrength = 'Decent Analysis';
+        else if(word_count >= 3500 && word_count < 6000)
             analysisStrength = 'Strong Analysis';
         else if(word_count >= 6000)
             analysisStrength = 'Very Strong Analysis';
@@ -250,7 +252,9 @@ class WatsonDetail extends React.Component{
             <div className="watson-container">
                 <h3>Personality Portrait</h3>
                 <p className="word-count">{word_count} words analyzed: <span className="analysis-strength">{analysisStrength}</span></p>
-                <WatsonGraph />
+                <WatsonDetailSections category="personality" data={this.state.personality} />
+                <WatsonDetailSections category="needs" data={this.state.needs} />
+                <WatsonDetailSections category="values" data={this.state.values} />
             </div>
         )
     }
