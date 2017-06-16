@@ -1,7 +1,10 @@
+import { sortByDate } from '../utils';
+
 const initialState = {
     presidents: [],
     transcripts: [],
-    watson: []
+    watson: [],
+    error : null,
 };
 
 export default (state = initialState, action) => {
@@ -52,17 +55,20 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: true
             };
-        case 'POST_TRANSCRIPT_SUCCESS':
-            return {
-                ...state,
-                loading: false,
-                transcripts: action.payload
-            };
+      case 'POST_TRANSCRIPT_SUCCESS':
+           const transcripts = state.transcripts.slice();
+           transcripts.push(action.payload);
+           sortByDate(transcripts);
+           return {
+               ...state,
+               loading: false,
+               transcripts
+           };
         case 'POST_TRANSCRIPT_FAILURE':
             return {
                 ...state,
                 loading: false,
-                transcripts: action.payload
+              error: action.payload
             };
 
         // get Watson insight
