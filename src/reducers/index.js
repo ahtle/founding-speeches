@@ -1,9 +1,16 @@
 import { sortByDate } from '../utils';
+// import { combineReducers } from 'redux';
+// import watson from './watson';
 
 const initialState = {
     presidents: [],
     transcripts: [],
     watson: [],
+    loading: false,
+    // watson: {
+    //     data: [],
+    //     loading: false
+    // },
     error : null,
 };
 
@@ -94,4 +101,9 @@ export default (state = initialState, action) => {
             return state;
     }
 
-}
+};
+
+// export default combineReducers({
+//   ...rootReducer,
+//   watson: watson
+// });

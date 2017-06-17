@@ -20,6 +20,9 @@ class DetailContainer extends React.Component {
     }
 
     componentDidMount(){
+        if(typeof this.props.president !== 'object') {
+           this.props.actions.loadPresidents();
+        }
         this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
     }
 
@@ -42,15 +45,15 @@ class DetailContainer extends React.Component {
         const speechesList = props.transcripts.map((transcript, index) => {
             return <SpeechesList history={props.history} date={transcript.date} title={transcript.title} key={index} presId={props.match.params.presid} id={index}/>
         });
-
+        const { president = {} } = props;
         return (
             <section>
-                <DetailBanner banner={props.president.banner} startYear={props.president.startYear} endYear={props.president.endYear} name={props.president.name} />
+                <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} name={president.name} />
                 <section className="detail-speeches-list">
                     {speechesList}
                     <button onClick={() => this.toogleAddSpeechForm()} className="btn-add-speech">Add a speech</button>
                 </section>
-                {isSpeechFormVisible && <AddSpeechForm presId={props.president.presId} onClose={() => this.toogleAddSpeechForm()}/>}
+                {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.toogleAddSpeechForm()}/>}
             </section>
         );
     }

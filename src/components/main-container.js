@@ -38,7 +38,7 @@ const mapStateToProps = (state, props) => {
         history: props.history,
         presidents: state.presidents 
     }
-}
+};
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
