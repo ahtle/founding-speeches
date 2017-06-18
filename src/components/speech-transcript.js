@@ -4,36 +4,66 @@ import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import * as actions from '../actions/';
 import { formatDate } from '../utils';
+import WatsonDetailContainer from './watson-detail-container';
 import './styles/speech-transcript.css';
 
 class SpeechTranscript extends React.Component{
     constructor(props, context){
         super(props);
+
+        this.state = {
+            showWatsonInsight: false
+        }
     }
 
-    watsonAPI(text){
-        this.props.actions.getWatsonInsight(text);
+    componentDidMount(){
+        if(typeof this.props.president !== 'object'){
+            this.props.actions.loadPresidents();
+            this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
+        }
+    }
 
-        setTimeout(() => {
-            console.log(this.props.watson);
-        }, 3000)
+    toggleDisplay(){
+        console.log('speech-transcript toggleDisplay called');
+        this.setState({
+            showWatsonInsight: !this.state.showWatsonInsight
+        })
+    }
+
+    handleWatsonClick(text){
+        this.props.actions.getWatsonInsight(text);
+        this.toggleDisplay();
     }
 
     render(){
         const props = this.props;
+        const date = new Date();
+        const { speech = {text: 'loading', title: 'loading', date: date.toISOString()}, president = {name: 'loading'} } = props;
+        
+        let watsonDetailContainer;
+        if(this.state.showWatsonInsight)
+            watsonDetailContainer = <WatsonDetailContainer toggleDisplay={() => this.toggleDisplay()}/>
 
-        let textFormatted = props.speech.text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        let textFormatted = speech.text.replace(/(?:\r\n|\r|\n)/g, '<br />');
 
         return(
             <div className="transcript-container">
-                <button onClick={() => this.watsonAPI(props.speech.text)}>Watson</button>
-                <p><Link to={`/detail/${props.match.params.presid}`}>{props.president.name} Precidency</Link></p>
-                <h3>{formatDate(props.speech.date)}: {props.speech.title}</h3>
+                <p><Link to={`/detail/${props.match.params.presid}`}>{president.name}</Link> Precidency</p>
+                <input type="image" src="../public/img/watson_logo.png" onClick={() => this.handleWatsonClick(speech.text)} />
+                <h3>{formatDate(speech.date)}: {speech.title}</h3>
                 <h4>Transcript</h4>
                 <p className="transcript-text" dangerouslySetInnerHTML={{__html: textFormatted}} />
+                {watsonDetailContainer}
             </div>
         );
     }
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        actions: bindActionCreators(actions, dispatch),
+        dispatch
+    };
 };
 
 const mapStateToProps = (state, props) => {
@@ -44,11 +74,5 @@ const mapStateToProps = (state, props) => {
     }
 };
 
-const mapDispatchToProps = (dispatch, props) => {
-    return {
-        actions: bindActionCreators(actions, dispatch),
-        dispatch
-    };
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpeechTranscript);

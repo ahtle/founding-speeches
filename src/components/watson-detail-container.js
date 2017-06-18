@@ -1,9 +1,10 @@
 import React from 'react';
-import WatsonDetailSections from './watson-detail-sections';
+import WatsonDetailCategory from './watson-detail-category';
+import { connect } from 'react-redux';
 
-import './styles/watson-detail.css';
+import './styles/watson-detail-container.css';
 
-class WatsonDetail extends React.Component{
+class WatsonDetailContainer extends React.Component{
     constructor(props){
         super(props);
 
@@ -236,28 +237,49 @@ class WatsonDetail extends React.Component{
         } // end state
     }
 
+    componentDidMount(){
+        document.body.className="noscroll";
+    }
+
+    closeContainer(){
+        console.log('watson-container-background clicked');
+        if(this.props.toggleDisplay)
+            this.props.toggleDisplay();
+        document.body.className="";
+    }
+
     render(){
         const props = this.props;
-        const word_count = this.state.word_count;
+        const wordCount = props.watson.word_count;
+
 
         let analysisStrength = 'Weak Analysis';
-        if(word_count >= 1200 && word_count < 3500)
+        if(wordCount >= 1200 && wordCount < 3500)
             analysisStrength = 'Decent Analysis';
-        else if(word_count >= 3500 && word_count < 6000)
+        else if(wordCount >= 3500 && wordCount < 6000)
             analysisStrength = 'Strong Analysis';
-        else if(word_count >= 6000)
+        else if(wordCount >= 6000)
             analysisStrength = 'Very Strong Analysis';
 
         return(
-            <div className="watson-container">
-                <h3>Personality Portrait</h3>
-                <p className="word-count">{word_count} words analyzed: <span className="analysis-strength">{analysisStrength}</span></p>
-                <WatsonDetailSections category="personality" data={this.state.personality} />
-                <WatsonDetailSections category="needs" data={this.state.needs} />
-                <WatsonDetailSections category="values" data={this.state.values} />
+            <div className="watson-container-background" onClick={() => this.closeContainer()}>
+                <div className="watson-container">
+                    <h3>Personality Portrait</h3>
+                    <p className="word-count">{wordCount} words analyzed: <span className="analysis-strength">{analysisStrength}</span></p>
+                    <WatsonDetailCategory category="personality" data={this.state.personality} />
+                    <WatsonDetailCategory category="needs" data={this.state.needs} />
+                    <WatsonDetailCategory category="values" data={props.watson.values} />
+                </div>
             </div>
         )
     }
 }
 
-export default WatsonDetail;
+const mapStateToProps = (state, props) => {
+    return {
+        word_count: state.watson.word_count,
+        watson: state.watson
+    }
+}
+
+export default connect(mapStateToProps)(WatsonDetailContainer);

@@ -1,0 +1,45 @@
+.watson-container-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	position: absolute;
+	top: 0;
+    right: 0;
+    bottom: 0;
+	left: 0;
+	margin: 0;
+	z-index: 1000;
+    overflow: auto;
+    background: rgb(60, 60, 60);
+    background: rgba(60, 60, 60, 0.6);
+}
+
+.watson-container {
+    position: absolute;
+    width: 1000px;
+    background-color: #E5E5E5;
+    padding: 20px;
+    margin: 0 auto 40px;
+    top: 40px;
+}
+
+.watson-container > h3{
+    color: #ec560a;
+    font-size: 25pt;
+    margin: 20px 0 10px;
+}
+
+.word-count {
+    font-size: 16pt;
+    margin-bottom: 30px;
+}
+
+.analysis-strength {
+    color: #00b4a0;
+    font-size: 16pt;
+}
+
+/******* noscroll for body *********/
+.noscroll {
+    overflow: hidden;
+}

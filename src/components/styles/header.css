@@ -3,6 +3,11 @@ header {
 }
 
 header > div {
+    display: flex;
+    height: 100%;
+}
+
+header img {
     height: 100%;
 }
 

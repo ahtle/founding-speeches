@@ -7,34 +7,12 @@ class WatsonGraph extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = {
-            values: [
-                {
-                    "name": "Conservation",
-                    "percentile": 73
-                },
-                {
-                    "name": "Self-transcendence",
-                    "percentile": 39
-                },
-                {
-                    "name": "Openness to change",
-                    "percentile": 22
-                },
-                {
-                    "name": "Hedonism",
-                    "percentile": 1
-                },
-                {
-                    "name": "Self-enhancement",
-                    "percentile": 0
-                }
-            ]
-        };
     }
 
     componentDidMount() {
-        this.setContext();
+        setTimeout(() => {
+            this.setContext();
+        }, 1500);
     }
 
     handleClick(text){
@@ -44,8 +22,7 @@ class WatsonGraph extends React.Component {
 
     // svg canvas
     setContext() {
-
-        let data = this.props.data;
+        const data = this.props.data;
 
         //set up svg using margin conventions - we'll need plenty of room on the left for labels
         var margin = {

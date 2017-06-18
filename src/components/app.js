@@ -5,7 +5,7 @@ import Header from './header';
 import MainContainer from './main-container';
 import DetailContainer from './detail-container';
 import SpeechTranscript from './speech-transcript';
-import WatsonDetail from './watson-detail';
+import WatsonDetailContainer from './watson-detail-container';
 
 
 export default function App() {
@@ -13,7 +13,6 @@ export default function App() {
     return (
         <div className="App">
             <Header />
-            <WatsonDetail />
             <Route exact path="/" component={MainContainer}/>
             <Route exact path="/detail/:presid" component={DetailContainer} />
             <Route exact path="/transcript/:presid/:speechid" component={SpeechTranscript} />

@@ -5,11 +5,12 @@
 
 .transcript-container p {
     margin-bottom: 20px;
+    font-size: 15pt;
 }
 
 .transcript-container p a {
     text-decoration: none;
-    font-size: 15pt;
+    color: #ec560a;
 }
 
 .transcript-container h3 {

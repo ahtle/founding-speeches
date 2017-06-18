@@ -1,10 +1,9 @@
 import React from 'react';
 import WatsonGraph from './watson-graph';
 import {description} from '../utils/'
-import './styles/watson-detail-sections.css';
+import './styles/watson-detail-category.css';
 
-
-class WatsonDetailSections extends React.Component{
+class WatsonDetailCategory extends React.Component{
     constructor(props){
         super(props);
 
@@ -24,7 +23,6 @@ class WatsonDetailSections extends React.Component{
     render(){
         const props = this.props;
         let text = this.state.text[this.props.category][this.state.display];
-        // let infoboxHeader = 
         
         return(
             <section className="watson-section-container">
@@ -45,4 +43,4 @@ class WatsonDetailSections extends React.Component{
     }
 }
 
-export default WatsonDetailSections;
+export default WatsonDetailCategory;
