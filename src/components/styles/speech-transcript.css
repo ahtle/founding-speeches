@@ -13,6 +13,10 @@
     color: #ec560a;
 }
 
+.transcript-container-img {
+    height: 40px;
+}
+
 .transcript-container h3 {
     margin-bottom: 40px;
     font-size: 28pt;

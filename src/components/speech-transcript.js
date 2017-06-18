@@ -49,7 +49,7 @@ class SpeechTranscript extends React.Component{
         return(
             <div className="transcript-container">
                 <p><Link to={`/detail/${props.match.params.presid}`}>{president.name}</Link> Precidency</p>
-                <input type="image" src="../public/img/watson_logo.png" onClick={() => this.handleWatsonClick(speech.text)} />
+                <input className="transcript-container-img" type="image" src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/IBM-Watson-Logo.png" onClick={() => this.handleWatsonClick(speech.text)} />
                 <h3>{formatDate(speech.date)}: {speech.title}</h3>
                 <h4>Transcript</h4>
                 <p className="transcript-text" dangerouslySetInnerHTML={{__html: textFormatted}} />
