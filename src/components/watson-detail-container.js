@@ -248,6 +248,7 @@ class WatsonDetailContainer extends React.Component{
         document.body.className="";
     }
 
+
     render(){
         const props = this.props;
         const wordCount = props.watson.word_count;
@@ -266,8 +267,8 @@ class WatsonDetailContainer extends React.Component{
                 <div className="watson-container">
                     <h3>Personality Portrait</h3>
                     <p className="word-count">{wordCount} words analyzed: <span className="analysis-strength">{analysisStrength}</span></p>
-                    <WatsonDetailCategory category="personality" data={this.state.personality} />
-                    <WatsonDetailCategory category="needs" data={this.state.needs} />
+                    <WatsonDetailCategory category="personality" data={props.watson.personality} />
+                    <WatsonDetailCategory category="needs" data={props.watson.needs} />
                     <WatsonDetailCategory category="values" data={props.watson.values} />
                 </div>
             </div>

@@ -12,7 +12,7 @@ class WatsonGraph extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.setContext();
-        }, 1500);
+        }, 1800);
     }
 
     handleClick(text){
