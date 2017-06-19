@@ -4,10 +4,6 @@ import * as d3 from 'd3';
 import './styles/watson-graph.css';
 
 class WatsonGraph extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-
-    }
 
     componentDidMount() {
         setTimeout(() => {
@@ -58,7 +54,9 @@ class WatsonGraph extends React.Component {
         
         //click on axis tick
         svg.selectAll("text")
-            .on("click", (d) => this.handleClick(d));
+            .on("click", (d) => {
+                this.handleClick(d, svg);
+            });
         
         //make bars
         var bars = svg.selectAll(".bar")
@@ -72,7 +70,9 @@ class WatsonGraph extends React.Component {
             .attr("height", y.bandwidth())
             .attr("x", 0)
             .attr("width", (d) => {return x(d.percentile);})
-            .on("click", (d) => this.handleClick(d.name));
+            .on("click", (d, i) => {
+                this.handleClick(d.name);
+            });
 
         //add a value label to the right of each bar
         bars.append("text")

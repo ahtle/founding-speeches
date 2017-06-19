@@ -1,0 +1,33 @@
+ul {
+    position: absolute;
+    display: flex;
+    margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    justify-content: center;
+    background-color: #020271;
+}
+
+li {
+    float: right;
+    min-width: 140px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+li:hover {
+    background-color: #ec560a;
+}
+
+li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #ec560a;
+}

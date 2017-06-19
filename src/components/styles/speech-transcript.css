@@ -3,29 +3,43 @@
     color: #020271;
 }
 
-.transcript-container p {
+.transcript-container > p {
     margin-bottom: 20px;
     font-size: 15pt;
 }
 
-.transcript-container p a {
+.transcript-container > p a {
     text-decoration: none;
     color: #ec560a;
 }
 
-.transcript-container-img {
-    height: 120px;
-}
-
-.transcript-container h3 {
+.transcript-container > h3 {
     margin-bottom: 40px;
     font-size: 28pt;
 }
 
-.transcript-container h4 {
+.transcript {
     margin-bottom: 30px;
     font-size: 25pt;
 }
+
+.watson-button-container {
+    display: flex;
+    align-items: center;
+    font-size: 18pt;
+    color: #006699;
+    margin-bottom: 20px;
+}
+
+.watson-button-container > p{
+    cursor: pointer;
+}
+
+.transcript-container-img {
+    height: 80px;
+    margin-right: 15px;
+}
+
 
 .transcript-text {
     font-size: 15pt;

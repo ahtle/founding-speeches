@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../actions/';
 
+import './styles/main-container.css';
+
 class MainContainer extends React.Component{
     constructor(props, context){
         super(props);

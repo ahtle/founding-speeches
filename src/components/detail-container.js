@@ -30,12 +30,12 @@ class DetailContainer extends React.Component {
         this.setState({
             isSpeechFormVisible: !this.state.isSpeechFormVisible
         });
-        this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
+        //this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
         setTimeout(() => {
             this.setState({
                 reload: !this.reload
             })
-        }, 2000)
+        }, 1800)
     }
 
     render() {

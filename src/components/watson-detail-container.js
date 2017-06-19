@@ -9,7 +9,8 @@ class WatsonDetailContainer extends React.Component{
         super(props);
 
         this.state = {
-            word_count: 1657,
+            showInfobox: false,
+            word_count: 3500,
             personality: [
                 {
                     "name": "Openness",
@@ -235,41 +236,74 @@ class WatsonDetailContainer extends React.Component{
                 }
             ]
         } // end state
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
     }
 
     componentDidMount(){
         document.body.className="noscroll";
     }
 
-    closeContainer(){
-        console.log('watson-container-background clicked');
+    closeContainer(e){
+        e.stopPropagation();
         if(this.props.toggleDisplay)
             this.props.toggleDisplay();
         document.body.className="";
     }
 
+    handleMouseEnter(){
+        console.log('mouse entered');
+        this.setState({
+            showInfobox: true
+        });
+    }
+
+    handleMouseLeave(){
+        console.log('mouse left');
+        this.setState({
+            showInfobox: false
+        })
+    }
 
     render(){
-        const props = this.props;
-        const wordCount = props.watson.word_count;
-
+        //const props = this.props;
+        // const wordCount = props.watson.word_count;
+        const wordCount = this.state.word_count
 
         let analysisStrength = 'Weak Analysis';
-        if(wordCount >= 1200 && wordCount < 3500)
+        let wordCountInfobox = "With this many words, you can't get a fair read on someone's personality. Can you use at least 1500 to get a general impression?";
+        if(wordCount >= 1200 && wordCount < 3500){
             analysisStrength = 'Decent Analysis';
-        else if(wordCount >= 3500 && wordCount < 6000)
+            wordCountInfobox = "These results are a general impression of this person, and they should be taken with a grain of salt. Increase the word count to 3500 to get a strong one.";
+        }
+        else if(wordCount >= 3500 && wordCount < 6000){
             analysisStrength = 'Strong Analysis';
-        else if(wordCount >= 6000)
+            wordCountInfobox = "This is a confident read of someone's personality. It's statistically significant! ...but wait, there's more! For only 6000 words, you'll get something so accurate it's scary. Do it!";
+        }
+        else if(wordCount >= 6000){
             analysisStrength = 'Very Strong Analysis';
+            wordCountInfobox ="A word count of 6000 or more is a high-quality assessment of someone's personality. It's statistically significant.";
+        }
+
+        let show;
+        if(!this.state.showInfobox)
+            show = 'word-count-infobox-container hidden';
+        else
+            show = 'word-count-infobox-container'
 
         return(
-            <div className="watson-container-background" onClick={() => this.closeContainer()}>
+            <div className="watson-container-background" >
                 <div className="watson-container">
+                    <div className='x' onClick={(e) => this.closeContainer(e)}>X</div>
                     <h3>Personality Portrait</h3>
-                    <p className="word-count">{wordCount} words analyzed: <span className="analysis-strength">{analysisStrength}</span></p>
-                    <WatsonDetailCategory category="personality" data={props.watson.personality} />
-                    <WatsonDetailCategory category="needs" data={props.watson.needs} />
-                    <WatsonDetailCategory category="values" data={props.watson.values} />
+                    <p className="word-count">{wordCount} words analyzed: <span className="analysis-strength" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>{analysisStrength}</span></p>
+                    <div className={show}>
+                        <div className="arrow-up"></div>
+                        <div className="word-count-infobox">{wordCountInfobox}</div>
+                    </div>
+                    <WatsonDetailCategory category="personality" data={this.state.personality} />
+                    <WatsonDetailCategory category="needs" data={this.state.needs} />
+                    <WatsonDetailCategory category="values" data={this.state.values} />
                 </div>
             </div>
         )
