@@ -1,0 +1,41 @@
+.user-text-container{
+    margin-top: 60px;
+}
+
+.grid {
+    display: flex;
+    max-width: 1000px;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid > h3 {
+    margin-bottom: 20px;
+    color: #ec560a;
+}
+
+.grid > p {
+    margin-bottom: 10px;
+}
+
+.textarea-container {
+    margin-top: 40px;
+    background-color: #020271;
+    padding: 20px;
+}
+
+.user-textarea {
+    height: 300px;
+    padding: 15px;
+}
+
+.user-text-button {
+    float: right;
+    width: 100px;
+    padding: 5px;
+    background-color: #ec560a;
+    border: none;
+    color: #fff;
+    font-size: 15pt;
+}

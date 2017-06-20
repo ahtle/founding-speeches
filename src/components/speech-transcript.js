@@ -24,7 +24,6 @@ class SpeechTranscript extends React.Component{
     }
 
     toggleDisplay(){
-        console.log('speech-transcript toggleDisplay called');
         this.setState({
             showWatsonInsight: !this.state.showWatsonInsight
         })

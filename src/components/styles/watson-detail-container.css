@@ -26,10 +26,10 @@
 .watson-container {
     position: absolute;
     width: 1000px;
-    background-color: #E5E5E5;
     padding: 20px;
     margin: 0 auto 40px;
     top: 40px;
+    background-color: #E5E5E5;
 }
 
 .watson-container > h3{

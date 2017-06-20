@@ -252,23 +252,21 @@ class WatsonDetailContainer extends React.Component{
     }
 
     handleMouseEnter(){
-        console.log('mouse entered');
         this.setState({
             showInfobox: true
         });
     }
 
     handleMouseLeave(){
-        console.log('mouse left');
         this.setState({
             showInfobox: false
         })
     }
 
     render(){
-        //const props = this.props;
-        // const wordCount = props.watson.word_count;
-        const wordCount = this.state.word_count
+        const props = this.props;
+        const wordCount = props.watson.word_count;
+        //const wordCount = this.state.word_count
 
         let analysisStrength = 'Weak Analysis';
         let wordCountInfobox = "With this many words, you can't get a fair read on someone's personality. Can you use at least 1500 to get a general impression?";
@@ -301,9 +299,9 @@ class WatsonDetailContainer extends React.Component{
                         <div className="arrow-up"></div>
                         <div className="word-count-infobox">{wordCountInfobox}</div>
                     </div>
-                    <WatsonDetailCategory category="personality" data={this.state.personality} />
-                    <WatsonDetailCategory category="needs" data={this.state.needs} />
-                    <WatsonDetailCategory category="values" data={this.state.values} />
+                    <WatsonDetailCategory category="personality" data={props.watson.personality} />
+                    <WatsonDetailCategory category="needs" data={props.watson.needs} />
+                    <WatsonDetailCategory category="values" data={props.watson.values} />
                 </div>
             </div>
         )
