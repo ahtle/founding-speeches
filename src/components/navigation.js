@@ -16,28 +16,30 @@ export default class Navigation extends React.Component{
         this.setState({
             active: activeTab
         });
-        console.log(activeTab);
+        console.log(this.state.active);
     }
 
     render(){
 
-        let navPresident;
-        let navOwnText;
+        console.log(this.props.match.params.userText);
 
-        if(this.state.active === 'president'){
-            navPresident = 'active';
-            navOwnText = '';
+        let presidentClass;
+        let userTextClass;
+
+        if(this.props.match.params.userText === undefined){
+            presidentClass = 'active';
+            userTextClass = 'not-active';
         }
-        else if(this.state.active === 'ownText'){
-            navPresident = '';
-            navOwnText = 'active';
+        else {
+            presidentClass = 'not-active';
+            userTextClass = 'active';
         }
 
         return (
             <nav>
                 <ul>
-                    <li className={navPresident} onClick={() => this.toggleActiveClass('president')} ><Link to="/">Presidents</Link></li>
-                    <li className={navOwnText} onClick={() => this.toggleActiveClass('ownText')} ><Link to="/userText">Your own text</Link></li>
+                    <li className={presidentClass} onClick={() => this.toggleActiveClass('president')} ><Link to="/">Presidents</Link></li>
+                    <li className={userTextClass} onClick={() => this.toggleActiveClass('ownText')} ><Link to="/userText">Your own text</Link></li>
                 </ul>
             </nav>
         );
