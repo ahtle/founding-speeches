@@ -82,6 +82,11 @@
     background-color: #f3f1f1;
 }
 
+.center > p {
+    position: absolute;
+    top: 20%;
+}
+
 .center > a, .bottom > a {
     position: absolute;
     bottom: 10%;
@@ -94,6 +99,7 @@
 .right {
     width: 33%;
     position: relative;
+    color: #325c80;
 }
 
 .top {
@@ -109,13 +115,9 @@
 }
 
 .bottom > p {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.bottom > ul {
-    list-style: none;
-    padding: 0;
-}
 
 footer {
     background-color: #020271;
@@ -125,6 +127,10 @@ footer {
     align-items: center;
 }
 
-footer > input {
+footer > a {
     height: 70%;
+}
+
+footer > a > img {
+    height: 100%;
 }

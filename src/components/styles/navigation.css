@@ -26,6 +26,9 @@ li:hover {
 li a {
     color: #fff;
     text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .active {

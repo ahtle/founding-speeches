@@ -16,7 +16,6 @@ export default class Navigation extends React.Component{
         this.setState({
             active: activeTab
         });
-        console.log(this.state.active);
     }
 
     render(){
@@ -38,8 +37,8 @@ export default class Navigation extends React.Component{
         return (
             <nav>
                 <ul>
-                    <li className={presidentClass} onClick={() => this.toggleActiveClass('president')} ><Link to="/">Presidents</Link></li>
-                    <li className={userTextClass} onClick={() => this.toggleActiveClass('ownText')} ><Link to="/userText">Your own text</Link></li>
+                    <li className={presidentClass} onClick={() => this.toggleActiveClass('president')} ><Link to="/main">Presidents</Link></li>
+                    <li className={userTextClass} onClick={() => this.toggleActiveClass('ownText')} ><Link to="/main/userText">Your own text</Link></li>
                 </ul>
             </nav>
         );
