@@ -1,13 +1,13 @@
 .section-one {
     position: relative;
-    background-image: url("https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/landing_image.jpeg");
+    background-image: url("https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/landing_image.jpg");
     width: 100%;
     height: 650px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-position-y: -20px;
+    background-position-y: -50px;
     background-color: #000;
 }
 
