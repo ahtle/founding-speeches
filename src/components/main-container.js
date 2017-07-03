@@ -13,7 +13,9 @@ class MainContainer extends React.Component{
     }
 
     componentDidMount(){
-        this.props.actions.loadPresidents();
+        if(typeof this.props.president !== 'object') {
+           this.props.actions.loadPresidents();
+        }
     };
 
     render(){
@@ -36,7 +38,6 @@ class MainContainer extends React.Component{
 
 const mapStateToProps = (state, props) => {
     return {
-        //...state.main,
         history: props.history,
         presidents: state.presidents 
     }
