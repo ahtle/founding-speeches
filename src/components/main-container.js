@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/';
 
 import './styles/main-container.css';
+import './styles/responsive/main-container-responsive.css';
 
 class MainContainer extends React.Component{
     constructor(props, context){

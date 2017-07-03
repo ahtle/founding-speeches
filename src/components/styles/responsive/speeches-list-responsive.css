@@ -1,0 +1,22 @@
+@media only screen and (max-width: 600px){
+
+    article {
+        padding: 12px 0 12px 0;
+    }
+
+    article p span {
+        font-size: 12pt;
+    }
+}
+
+@media only screen and (max-width: 500px){
+
+    article p span {
+        font-size: 10pt;
+    }
+
+    .date {
+        display: block;
+        position: relative;
+    }
+}

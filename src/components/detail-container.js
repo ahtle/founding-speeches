@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/';
-import './styles/detail-container.css';
-
+import {Link} from 'react-router-dom';
 import DetailBanner from './detail-banner';
 import SpeechesList from './speeches-list';
 import AddSpeechForm from './add-speech-form';
+
+import './styles/detail-container.css';
+import './styles/responsive/detail-container-responsive.css';
+
 
 class DetailContainer extends React.Component {
 
@@ -30,7 +33,6 @@ class DetailContainer extends React.Component {
         this.setState({
             isSpeechFormVisible: !this.state.isSpeechFormVisible
         });
-        //this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
         setTimeout(() => {
             this.setState({
                 reload: !this.reload
@@ -48,10 +50,13 @@ class DetailContainer extends React.Component {
         const { president = {} } = props;
         return (
             <section>
-                <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} name={president.name} />
+                <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} party={president.party} name={president.name} />
                 <section className="detail-speeches-list">
                     {speechesList}
-                    <button onClick={() => this.toogleAddSpeechForm()} className="btn-add-speech">Add a speech</button>
+                    <div className="detail-container-nav">
+                        <button onClick={() => this.toogleAddSpeechForm()} className="btn-add-speech">Add a speech</button>
+                        <Link to="/main">Back</Link>
+                    </div>
                 </section>
                 {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.toogleAddSpeechForm()}/>}
             </section>

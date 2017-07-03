@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import './styles/navigation.css';
+import './styles/responsive/navigation-responsive.css';
 
 export default class Navigation extends React.Component{
     constructor(props){

@@ -1,0 +1,10 @@
+@media only screen and (max-width: 600px){
+    header {
+        height: 40px;
+        padding: 7px;
+    }
+    
+    .app-name {
+        font-size: 15pt;
+    }
+}

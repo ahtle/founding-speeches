@@ -1,0 +1,11 @@
+@media only screen and (max-width: 600px){
+    li {
+        height: 25px;
+        line-height: 25px;
+        min-width: 120px;
+    }
+
+    li a {
+        font-size: 11pt;
+    }
+}

@@ -5,10 +5,24 @@
 }
 
 .btn-add-speech {
-    margin: 20pt auto;
     font-size: 20pt;
     padding: 5px 10px 5px 10px;
     background-color: #ec560a;
     color: #fff;
     border-radius: 10pt;
+}
+
+.detail-container-nav {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.detail-container-nav a {
+    text-decoration: underline;
+    font-size: 20pt;
+    right: 0;
+    position: absolute;
+    color: #ec560a;
 }

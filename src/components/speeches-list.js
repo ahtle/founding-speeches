@@ -1,6 +1,8 @@
 import React from 'react';
-import './styles/speeches-list.css';
 import { formatDate } from '../utils';
+
+import './styles/speeches-list.css';
+import './styles/responsive/speeches-list-responsive.css';
 
 export default function SpeechesList(props){
 
