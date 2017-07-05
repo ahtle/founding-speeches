@@ -1,7 +1,9 @@
 import React from 'react';
 import WatsonGraph from './watson-graph';
 import {description} from '../utils/'
+
 import './styles/watson-detail-category.css';
+import './styles/responsive/watson-detail-category-responsive.css';
 
 class WatsonDetailCategory extends React.Component{
     constructor(props){

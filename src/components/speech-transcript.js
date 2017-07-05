@@ -5,7 +5,11 @@ import {Link} from 'react-router-dom';
 import * as actions from '../actions/';
 import { formatDate } from '../utils';
 import WatsonDetailContainer from './watson-detail-container';
+
+import {scrollToTop} from '../utils';
+
 import './styles/speech-transcript.css';
+import './styles/responsive/speech-transcript-responsive.css';
 
 class SpeechTranscript extends React.Component{
     constructor(props, context){
@@ -17,6 +21,9 @@ class SpeechTranscript extends React.Component{
     }
 
     componentDidMount(){
+        // position page on top
+        scrollToTop(1);
+
         if(typeof this.props.president !== 'object'){
             this.props.actions.loadPresidents();
             this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
@@ -30,6 +37,7 @@ class SpeechTranscript extends React.Component{
     }
 
     handleWatsonClick(text){
+        scrollToTop(1);
         this.props.actions.getWatsonInsight(text);
         this.toggleDisplay();
     }

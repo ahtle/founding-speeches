@@ -7,6 +7,8 @@ import DetailBanner from './detail-banner';
 import SpeechesList from './speeches-list';
 import AddSpeechForm from './add-speech-form';
 
+import {scrollToTop} from '../utils';
+
 import './styles/detail-container.css';
 import './styles/responsive/detail-container-responsive.css';
 
@@ -29,10 +31,31 @@ class DetailContainer extends React.Component {
         this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
     }
 
-    toogleAddSpeechForm() {
+    addSpeechFormOn() {
+        
+        // auto-scroll to top of page
+        scrollToTop(600);
+
+        // show form
+        setTimeout(() => {
+            this.setState({
+                isSpeechFormVisible: true
+            });
+        }, 610);
+
+        // prevent scrolling
+        document.body.className="noscroll";
+    }
+
+    addSpeechFormOff(){
         this.setState({
-            isSpeechFormVisible: !this.state.isSpeechFormVisible
+            isSpeechFormVisible: false
         });
+
+        // enable scrolling
+        document.body.className="";
+        
+        // reload page to get new speech
         setTimeout(() => {
             this.setState({
                 reload: !this.reload
@@ -49,16 +72,16 @@ class DetailContainer extends React.Component {
         });
         const { president = {} } = props;
         return (
-            <section>
+            <section id="detail-container">
                 <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} party={president.party} name={president.name} />
                 <section className="detail-speeches-list">
                     {speechesList}
                     <div className="detail-container-nav">
-                        <button onClick={() => this.toogleAddSpeechForm()} className="btn-add-speech">Add a speech</button>
+                        <button onClick={() => this.addSpeechFormOn()} className="btn-add-speech">Add a speech</button>
                         <Link to="/main">Back</Link>
                     </div>
                 </section>
-                {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.toogleAddSpeechForm()}/>}
+                {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.addSpeechFormOff()}/>}
             </section>
         );
     }

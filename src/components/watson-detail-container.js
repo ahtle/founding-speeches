@@ -3,6 +3,7 @@ import WatsonDetailCategory from './watson-detail-category';
 import { connect } from 'react-redux';
 
 import './styles/watson-detail-container.css';
+import './styles/responsive/watson-detail-container-responsive.css';
 
 class WatsonDetailContainer extends React.Component{
     constructor(props){
