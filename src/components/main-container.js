@@ -3,6 +3,7 @@ import Card from './card';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../actions/';
+import {scrollToTop} from '../utils';
 
 import './styles/main-container.css';
 import './styles/responsive/main-container-responsive.css';
@@ -17,6 +18,8 @@ class MainContainer extends React.Component{
         if(typeof this.props.president !== 'object') {
            this.props.actions.loadPresidents();
         }
+
+        scrollToTop(100);
     };
 
     render(){

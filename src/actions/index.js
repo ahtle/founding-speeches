@@ -167,3 +167,16 @@ export function getWatsonInsight(text){
 
     }
 }
+
+//*************** clear watson state ************************
+function clearWatsonStateAction(){
+    return {
+        type: 'CLEAR_WATSON_STATE'
+    }
+}
+
+export function clearWatsonState(){
+    return function(dispatch){
+        dispatch(clearWatsonStateAction())
+    }
+}

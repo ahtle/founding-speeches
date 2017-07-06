@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/';
 
-import './styles/user-text-container.css'
+import './styles/user-text-container.css';
+import './styles/responsive/user-text-container-responsive.css'
 
 class UserTextContainer extends React.Component{
     constructor(props, context){
@@ -21,26 +22,21 @@ class UserTextContainer extends React.Component{
         })
     }
 
-    // wordCount(str){
-    //     let count = 0;
-
-    //     for (var i = 0; i < str.length; i++){
-    //         if (str[i] === " ") {
-    //             count = +1;
-    //         }
-    //     }
-    //     return (count + 1); // add 1 to count to account for extra space since 1 space = 2 words
-    // }
-
     handleWatsonClick(){
-        let input = this.text.value.trim()
-        //this.wordCount(input);
-        // let count = this.wordCount(input);
-        // if (count < 100){
-        //     alert(`Currently ${count} words... need at least 100 words`);
-        // }
+        // make reqest
+        let input = this.text.value.trim();
         this.props.actions.getWatsonInsight(input);
-        this.toggleDisplay();
+        
+        setTimeout(() => {
+            // watson don't return input
+            if(this.props.watson.length === 0){
+                alert('Oops, something went wrong. Make sure to use at least 100 English words!');
+            }
+            // watson return input
+            else {
+                this.toggleDisplay();
+            }
+        }, 2000);
     }
 
     render(){
@@ -75,7 +71,8 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        watson: state.watson
+        watson: state.watson,
+        error: state.error
     }
 };
 

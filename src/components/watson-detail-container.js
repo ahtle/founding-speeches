@@ -1,6 +1,7 @@
 import React from 'react';
 import WatsonDetailCategory from './watson-detail-category';
 import { connect } from 'react-redux';
+import * as actions from '../actions/';
 
 import './styles/watson-detail-container.css';
 import './styles/responsive/watson-detail-container-responsive.css';
@@ -245,8 +246,8 @@ class WatsonDetailContainer extends React.Component{
         document.body.className="noscroll";
     }
 
-    closeContainer(e){
-        e.stopPropagation();
+    closeContainer(){
+
         if(this.props.toggleDisplay)
             this.props.toggleDisplay();
         document.body.className="";
@@ -293,7 +294,7 @@ class WatsonDetailContainer extends React.Component{
         return(
             <div className="watson-container-background" >
                 <div className="watson-container">
-                    <div className='x' onClick={(e) => this.closeContainer(e)}>X</div>
+                    <div className='x' onClick={() => this.closeContainer()}>X</div>
                     <h3>Personality Portrait</h3>
                     <p className="word-count">{wordCount} words analyzed: <span className="analysis-strength" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>{analysisStrength}</span></p>
                     <div className={show}>

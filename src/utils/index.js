@@ -26,7 +26,7 @@ export function sortByDate(list) {
 export function scrollToTop(scrollDuration) {
   let scrollStep = - window.scrollY / (scrollDuration / 15),
     scrollInterval = setInterval(function () {
-      if (window.scrollY != 0) {
+      if (window.scrollY !== 0) {
         window.scrollBy(0, scrollStep);
       }
       else clearInterval(scrollInterval);

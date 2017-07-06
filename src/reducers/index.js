@@ -7,10 +7,6 @@ const initialState = {
     transcripts: [],
     watson: [],
     loading: false,
-    // watson: {
-    //     data: [],
-    //     loading: false
-    // },
     error : null,
 };
 
@@ -62,15 +58,15 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: true
             };
-      case 'POST_TRANSCRIPT_SUCCESS':
-           const transcripts = state.transcripts.slice();
-           transcripts.push(action.payload);
-           sortByDate(transcripts);
-           return {
-               ...state,
-               loading: false,
-               transcripts
-           };
+        case 'POST_TRANSCRIPT_SUCCESS':
+            const transcripts = state.transcripts.slice();
+            transcripts.push(action.payload);
+            sortByDate(transcripts);
+            return {
+                ...state,
+                loading: false,
+                transcripts
+            };
         case 'POST_TRANSCRIPT_FAILURE':
             return {
                 ...state,
@@ -88,15 +84,23 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
+                error: null,
                 watson: action.payload
             };
         case 'WATSON_INSIGHT_FAILURE':
             return {
                 ...state,
                 loading: false,
-                watson: action.payload
+                watson: [],
+                error: 'watson'
             };
         
+        // clear Watson state
+        case 'CLEAR_WATSON_STATE':
+            return {
+                watson: []
+            }
+
         default:
             return state;
     }

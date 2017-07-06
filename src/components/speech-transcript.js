@@ -37,9 +37,21 @@ class SpeechTranscript extends React.Component{
     }
 
     handleWatsonClick(text){
-        scrollToTop(1);
+        // request watson data
         this.props.actions.getWatsonInsight(text);
-        this.toggleDisplay();
+
+        setTimeout(() => {
+            // watson don't return input
+            if(this.props.watson.length === 0){
+                alert('Oops, something went wrong. Make sure to use at least 100 English words!');
+            }
+            // watson return input
+            else {
+                scrollToTop(1);
+                this.toggleDisplay();
+            }
+        }, 2000);
+
     }
 
     render(){

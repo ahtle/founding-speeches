@@ -1,0 +1,29 @@
+@media only screen and (max-width: 550px) {
+    .user-text-container {
+        margin-top: 50px;
+    }
+
+    .grid {
+        padding: 0 10px 0 10px;
+    }
+
+    .grid > h3 {
+        font-size: 14pt;
+    }
+
+    .textarea-container {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .user-textarea {
+        height: 200px;
+        padding: 10px;
+        margin: 10px auto 10px;
+    }
+
+    .user-text-button {
+        width: 80px;
+        font-size: 12pt;
+    }
+}

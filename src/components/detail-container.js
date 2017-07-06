@@ -49,18 +49,18 @@ class DetailContainer extends React.Component {
 
     addSpeechFormOff(){
         this.setState({
-            isSpeechFormVisible: false
+            isSpeechFormVisible: false,
+        }, () => {
+
+            // reload page to get new speech
+            this.setState({
+                reload: !this.reload
+            })
         });
 
         // enable scrolling
         document.body.className="";
         
-        // reload page to get new speech
-        setTimeout(() => {
-            this.setState({
-                reload: !this.reload
-            })
-        }, 1800)
     }
 
     render() {
