@@ -4,7 +4,7 @@ import './styles/detail-banner.css';
 import './styles/responsive/detail-banner-responsive.css';
 
 export default function DetailBanner(props){
-    const { startYear = '19**', endYear = '19**', name = '***', banner = 'placeholder.png', party = ''} = props;
+    const { startYear = '****', endYear = '****', name = 'loading', banner = 'placeholder.png', party = '****'} = props;
     return (
         <section className="detail-banner-container">
             <img className="banner" src={banner} alt="banner"/>

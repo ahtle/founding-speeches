@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/';
+
 import './styles/add-speech-form.css';
+import './styles/responsive/add-speech-form-responsive.css';
 
 class AddSpeechForm extends React.Component {
     constructor(props, context){
@@ -42,7 +44,7 @@ class AddSpeechForm extends React.Component {
                         <input className="add-form-title" type="text" placeholder="title" ref={input => this.title = input} required />
                         <input className="add-form-date" type="date" ref={input => this.date = input} required/>
                     </div>
-                    <textarea name="transcript" id="transcript" cols="30" rows="10" ref={input => this.text = input} required></textarea>
+                    <textarea name="transcript" id="transcript" cols="30" rows="10" placeholder="Enter transcript" ref={input => this.text = input} required></textarea>
                     <div className="add-form-div" >
                         <input className="add-form-submit" type="submit"/>
                         <button className="add-form-cancel" onClick={() => this.onClose()}>Cancel</button>

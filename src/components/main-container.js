@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../actions/';
 import {scrollToTop} from '../utils';
+import Loader from 'react-loader';
 
 import './styles/main-container.css';
 import './styles/responsive/main-container-responsive.css';
@@ -16,15 +17,17 @@ class MainContainer extends React.Component{
 
     componentDidMount(){
         if(typeof this.props.president !== 'object') {
-           this.props.actions.loadPresidents();
+            this.props.actions.loadPresidents();
         }
 
-        scrollToTop(100);
+        scrollToTop(10);
     };
 
     render(){
-        const props = this.props;
+        const props = this.props
+
         let cards;
+
         cards = props.presidents.map((president) => {
             return <Card history={props.history} img={president.thumbnail} startYear={president.startYear} endYear={president.endYear}
                 name={president.name} snippet={president.snippet} key={president.presId} id={president.presId} />
@@ -33,7 +36,9 @@ class MainContainer extends React.Component{
         return (
             <section className="main-container">
                 <div className="main-grid">
-                    {cards}
+                    <Loader loaded={props.loaded} >
+                        {cards}
+                    </Loader >
                 </div>
             </section>
         );
@@ -43,7 +48,8 @@ class MainContainer extends React.Component{
 const mapStateToProps = (state, props) => {
     return {
         history: props.history,
-        presidents: state.presidents 
+        presidents: state.presidents,
+        loaded: state.loaded
     }
 };
 

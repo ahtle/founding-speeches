@@ -6,7 +6,7 @@ const initialState = {
     presidents: [],
     transcripts: [],
     watson: [],
-    loading: false,
+    loaded: false,
     error : null,
 };
 
@@ -17,18 +17,18 @@ export default (state = initialState, action) => {
         case 'LOAD_PRESIDENTS_REQUEST':
             return {
                 ...state,
-                loading: true
+                loaded: false
             };
         case 'LOAD_PRESIDENTS_SUCCESS':
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 presidents: action.payload
             };
         case 'LOAD_PRESIDENTS_FAILURE':
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 presidents: action.payload
             };
 
@@ -37,18 +37,18 @@ export default (state = initialState, action) => {
         case 'LOAD_PRESIDENT_TRANSCRIPTS_REQUEST':
             return {
                 ...state,
-                loading: true
+                loaded: false
             };
         case 'LOAD_PRESIDENT_TRANSCRIPTS_SUCCESS':
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 transcripts: action.payload
             };
         case 'LOAD_PRESIDENT_TRANSCRIPTS_FAILURE':
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 transcripts: action.payload
             };
 
@@ -56,7 +56,7 @@ export default (state = initialState, action) => {
         case 'POST_TRANSCRIPT_REQUEST':
             return {
                 ...state,
-                loading: true
+                loaded: false,
             };
         case 'POST_TRANSCRIPT_SUCCESS':
             const transcripts = state.transcripts.slice();
@@ -64,33 +64,33 @@ export default (state = initialState, action) => {
             sortByDate(transcripts);
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 transcripts
             };
         case 'POST_TRANSCRIPT_FAILURE':
             return {
                 ...state,
-                loading: false,
-              error: action.payload
+                loaded: true,
+                error: action.payload
             };
 
         // get Watson insight
         case 'WATSON_INSIGHT_REQUEST':
             return {
                 ...state,
-                loading: true
+                loaded: false
             };
         case 'WATSON_INSIGHT_SUCCESS':
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 error: null,
                 watson: action.payload
             };
         case 'WATSON_INSIGHT_FAILURE':
             return {
                 ...state,
-                loading: false,
+                loaded: true,
                 watson: [],
                 error: 'watson'
             };

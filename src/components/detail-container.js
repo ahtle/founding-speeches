@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import DetailBanner from './detail-banner';
 import SpeechesList from './speeches-list';
 import AddSpeechForm from './add-speech-form';
+import Loader from 'react-loader';
 
 import {scrollToTop} from '../utils';
 
@@ -74,13 +75,15 @@ class DetailContainer extends React.Component {
         return (
             <section id="detail-container">
                 <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} party={president.party} name={president.name} />
-                <section className="detail-speeches-list">
-                    {speechesList}
-                    <div className="detail-container-nav">
-                        <button onClick={() => this.addSpeechFormOn()} className="btn-add-speech">Add a speech</button>
-                        <Link to="/main">Back</Link>
-                    </div>
-                </section>
+                <Loader loaded={props.loaded} >
+                    <section className="detail-speeches-list">
+                        {speechesList}
+                        <div className="detail-container-nav">
+                            <button onClick={() => this.addSpeechFormOn()} className="btn-add-speech">Add a speech</button>
+                            <Link to="/main">Back</Link>
+                        </div>
+                    </section>
+                </ Loader>
                 {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.addSpeechFormOff()}/>}
             </section>
         );
@@ -99,7 +102,8 @@ const mapStateToProps = (state, props) => {
     return {
         history: props.history,
         president: state.presidents[id - 1],
-        transcripts: state.transcripts
+        transcripts: state.transcripts,
+        loaded: state.loaded
     };
 };
 
