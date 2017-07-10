@@ -39,8 +39,7 @@
     margin-bottom: 30px;
 }
 
-.analysis-strength {
-    color: #00b4a0;
+.word-count > span {
     font-size: 16pt;
 }
 
@@ -67,6 +66,19 @@
     width: 270px;
     background-color: #00b4a0;
     padding: 15px;
+}
+
+/******* word count color **********/
+.red {
+    color: red;
+}
+
+.grey {
+    color: #777677;
+}
+
+.green {
+    color: #00b4a0;
 }
 
 /******* noscroll for body *********/

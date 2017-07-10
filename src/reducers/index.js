@@ -84,7 +84,6 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loaded: true,
-                error: null,
                 watson: action.payload
             };
         case 'WATSON_INSIGHT_FAILURE':
@@ -92,13 +91,21 @@ export default (state = initialState, action) => {
                 ...state,
                 loaded: true,
                 watson: [],
-                error: 'watson'
             };
         
         // clear Watson state
         case 'CLEAR_WATSON_STATE':
             return {
-                watson: []
+                ...state,
+                watson: [],
+                loaded: true
+            }
+
+        // set loaded state
+        case 'SET_STATE_LOADED':
+            return {
+                ...state,
+                loaded: action.payload
             }
 
         default:

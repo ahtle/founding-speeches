@@ -33,6 +33,19 @@ export function scrollToTop(scrollDuration) {
     }, 15);
 }
 
+export function wordCount(text) {
+  let wordCount;
+
+  const regex = /\s+/gi;
+  wordCount = text.replace(regex, ' ').split(' ').length;
+
+  if (text === '') {
+    wordCount = 0;
+  }
+
+  return wordCount;
+}
+
 export const description = {
   personality: {
     title: 'Personality',

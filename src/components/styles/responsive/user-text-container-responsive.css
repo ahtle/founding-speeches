@@ -13,7 +13,16 @@
 
     .textarea-container {
         margin-top: 20px;
+        margin-bottom: 20px;
         padding: 10px;
+    }
+
+    .textarea-container > p {
+        font-size: 12pt;
+    }
+
+    #word-count {
+        font-size: 14pt;
     }
 
     .user-textarea {

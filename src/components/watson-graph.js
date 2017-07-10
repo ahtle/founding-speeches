@@ -6,9 +6,7 @@ import './styles/watson-graph.css';
 class WatsonGraph extends React.Component {
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setContext();
-        }, 2000);
+        this.setContext();
     }
 
     handleClick(text){

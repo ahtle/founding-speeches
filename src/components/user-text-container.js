@@ -3,6 +3,8 @@ import WatsonDetailContainer from './watson-detail-container';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/';
+import {wordCount} from '../utils/';
+import Loader from 'react-loader';
 
 import './styles/user-text-container.css';
 import './styles/responsive/user-text-container-responsive.css'
@@ -12,9 +14,15 @@ class UserTextContainer extends React.Component{
         super(props);
 
         this.state = {
-            showWatsonInsight: false
+            showWatsonInsight: false,
+            wordCount: 0,
+            wordCountColor: 'red'
         }
     }
+
+    componentDidMount(){
+        this.props.actions.setStateLoaded(true);
+    };
 
     toggleDisplay(){
         this.setState({
@@ -23,10 +31,19 @@ class UserTextContainer extends React.Component{
     }
 
     handleWatsonClick(){
-        // make reqest
+
         let input = this.text.value.trim();
+
+        // check word count
+        if(this.state.wordCount < 100){
+            this.props.actions.clearWatsonState();
+            return alert('This analysis needs at least 100 words');
+        }
+
+        // make request
+
         this.props.actions.getWatsonInsight(input);
-        
+
         setTimeout(() => {
             // watson don't return input
             if(this.props.watson.length === 0){
@@ -34,12 +51,34 @@ class UserTextContainer extends React.Component{
             }
             // watson return input
             else {
+                console.log(this.props.watson);
                 this.toggleDisplay();
             }
-        }, 2000);
+        }, 2500);
+    }
+
+    liveWordCount(){
+        let input = this.text.value.trim();
+        let count = wordCount(input);
+        let wordCountColor = 'red';
+
+        if(count >= 100){
+            wordCountColor = 'grey';
+        }
+
+        if(count >= 3500){
+            wordCountColor = 'green';
+        }
+
+        this.setState({
+            wordCount: count,
+            wordCountColor
+        });
     }
 
     render(){
+
+        // ****************
 
         let watsonDetailContainer;
         if(this.state.showWatsonInsight)
@@ -52,10 +91,13 @@ class UserTextContainer extends React.Component{
                     <p>Paste in any text you are interested in and see what Watson have to say about the writer's personality.</p>
                     <p>You will need at least 100 words, but the best analysis requires 6000 words or more.</p>
                     <div className="textarea-container">
-                        <textarea className="user-textarea" id="textarea" ref={input => this.text = input}></textarea>
+                        <textarea className="user-textarea" onChange={() => this.liveWordCount()} ref={input => this.text = input}></textarea>
                         <button className="user-text-button" onClick={() => this.handleWatsonClick()}>Analyze</button>
+                        <p>Word count: <span id="word-count" className ={this.state.wordCountColor} >{this.state.wordCount}</span></p>
                     </div>
-                    {watsonDetailContainer}
+                    <Loader loaded={this.props.loaded} >
+                        {watsonDetailContainer}
+                    </Loader >
                 </div>
             </section>
         )
@@ -72,7 +114,7 @@ const mapDispatchToProps = (dispatch, props) => {
 const mapStateToProps = (state, props) => {
     return {
         watson: state.watson,
-        error: state.error
+        loaded: state.loaded
     }
 };
 

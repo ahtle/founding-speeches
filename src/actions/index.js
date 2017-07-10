@@ -176,7 +176,21 @@ function clearWatsonStateAction(){
 }
 
 export function clearWatsonState(){
-    return function(dispatch){
-        dispatch(clearWatsonStateAction())
+    return function(dispatch, getState){
+        return dispatch(clearWatsonStateAction())
+    }
+}
+
+//************** set state.loaded ********************
+function stateLoadedAction(loaded){
+    return {
+        type: 'SET_STATE_LOADED',
+        payload: loaded
+    }
+}
+
+export function setStateLoaded(loaded){
+    return function(dispatch, getState){
+        return dispatch(stateLoadedAction(loaded))
     }
 }

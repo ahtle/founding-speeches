@@ -1,7 +1,6 @@
 import React from 'react';
 import WatsonDetailCategory from './watson-detail-category';
 import { connect } from 'react-redux';
-import * as actions from '../actions/';
 
 import './styles/watson-detail-container.css';
 import './styles/responsive/watson-detail-container-responsive.css';
@@ -268,21 +267,25 @@ class WatsonDetailContainer extends React.Component{
     render(){
         const props = this.props;
         const wordCount = props.watson.word_count;
-        //const wordCount = this.state.word_count
 
         let analysisStrength = 'Weak Analysis';
         let wordCountInfobox = "With this many words, you can't get a fair read on someone's personality. Can you use at least 1500 to get a general impression?";
+        let wordCountColor = 'red';
+        
         if(wordCount >= 1200 && wordCount < 3500){
             analysisStrength = 'Decent Analysis';
             wordCountInfobox = "These results are a general impression of this person, and they should be taken with a grain of salt. Increase the word count to 3500 to get a strong one.";
+            wordCountColor = 'grey';    
         }
         else if(wordCount >= 3500 && wordCount < 6000){
             analysisStrength = 'Strong Analysis';
             wordCountInfobox = "This is a confident read of someone's personality. It's statistically significant! ...but wait, there's more! For only 6000 words, you'll get something so accurate it's scary. Do it!";
+            wordCountColor = 'green';
         }
         else if(wordCount >= 6000){
             analysisStrength = 'Very Strong Analysis';
             wordCountInfobox ="A word count of 6000 or more is a high-quality assessment of someone's personality. It's statistically significant.";
+            wordCountColor = 'green';
         }
 
         let show;
@@ -296,7 +299,7 @@ class WatsonDetailContainer extends React.Component{
                 <div className="watson-container">
                     <div className='x' onClick={() => this.closeContainer()}>X</div>
                     <h3>Personality Portrait</h3>
-                    <p className="word-count">{wordCount} words analyzed: <span className="analysis-strength" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>{analysisStrength}</span></p>
+                    <p className="word-count">{wordCount} words analyzed: <span className={wordCountColor} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>{analysisStrength}</span></p>
                     <div className={show}>
                         <div className="arrow-up"></div>
                         <div className="word-count-infobox">{wordCountInfobox}</div>

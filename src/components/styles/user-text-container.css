@@ -25,6 +25,11 @@
     padding: 20px;
 }
 
+.textarea-container > p {
+    color: #fff;
+    font-size: 15pt;
+}
+
 .user-textarea {
     height: 400px;
     padding: 15px;
@@ -38,4 +43,16 @@
     border: none;
     color: #fff;
     font-size: 15pt;
+}
+
+.red {
+    color: red;
+}
+
+.grey {
+    color: #777677;
+}
+
+.green {
+    color: #00b4a0;
 }
