@@ -15,7 +15,7 @@ class WatsonDetailContainer extends React.Component{
             personality: [
                 {
                     "name": "Openness",
-                    "percentile": "91",
+                    "percentile": "100",
                     "children": [
                         {
                             "name": "Intellect",
@@ -307,6 +307,7 @@ class WatsonDetailContainer extends React.Component{
                     <WatsonDetailCategory category="personality" data={props.watson.personality} />
                     <WatsonDetailCategory category="needs" data={props.watson.needs} />
                     <WatsonDetailCategory category="values" data={props.watson.values} />
+                    {/*<WatsonDetailCategory category="values" data={props.watson.values} />*/}
                 </div>
             </div>
         )

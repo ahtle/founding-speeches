@@ -1,0 +1,29 @@
+@media only screen and (max-width: 550px) {
+    .watson-container-background {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .watson-container {
+        padding: 10px;
+    }
+
+    .watson-container > h3{
+        font-size: 14pt;
+    }
+
+    .word-count {
+        font-size: 12pt;
+        margin-bottom: 15px;
+    }
+
+    .word-count > span {
+        font-size: 12pt;
+    }
+
+    .word-count-infobox-container {
+        top: 85px;
+        left: 50px;
+        width: 200px;
+    }
+}

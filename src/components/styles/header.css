@@ -4,6 +4,7 @@ header {
     height: 60px;
     box-shadow: 0px 2px 1px 0px rgba(0,0,0,0.1);
     padding: 10px;
+    background-color: #fff;
 }
 
 header > div {

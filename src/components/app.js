@@ -7,7 +7,6 @@ import Navigation from './navigation';
 import MainContainer from './main-container';
 import DetailContainer from './detail-container';
 import SpeechTranscript from './speech-transcript';
-import WatsonDetailContainer from './watson-detail-container';
 import UserTextContainer from  './user-text-container';
 
 

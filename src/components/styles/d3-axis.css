@@ -1,0 +1,14 @@
+.Axis text {
+    font-size: 9px;
+    fill: black;
+    cursor: pointer;
+}
+
+.Axis-Left text {
+    transform: rotate(-8deg);
+    text-anchor: end;
+}
+
+/*path {
+    display: none;
+}*/

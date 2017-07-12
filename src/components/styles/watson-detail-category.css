@@ -9,15 +9,21 @@
 
 .graph-container {
     text-align: center;
+    width: 50%;
     padding: 20px;
 }
 
-.graph-container-header:hover{
+.graph-container-header:hover {
     cursor: pointer;
 }
 
+.graph-container-header-active {
+    color: #ec560a;
+    fill: none;
+}
+
 .watson-section-infobox{
-    width: 100%;
+    width: 50%;
     padding: 20px;
     border-left: 1px solid lightgrey;
 }

@@ -1,0 +1,9 @@
+.bar {
+    fill: #6F257F;
+    cursor: pointer;
+}
+
+.active {
+    fill: #ec560a;
+    cursor: initial;
+}

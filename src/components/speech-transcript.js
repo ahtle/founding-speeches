@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import * as actions from '../actions/';
 import { formatDate } from '../utils';
 import WatsonDetailContainer from './watson-detail-container';
+import Loader from 'react-loader';
 
 import {scrollToTop} from '../utils';
 
@@ -31,6 +32,8 @@ class SpeechTranscript extends React.Component{
     }
 
     toggleDisplay(){
+        scrollToTop(400);
+
         this.setState({
             showWatsonInsight: !this.state.showWatsonInsight
         })
@@ -75,7 +78,9 @@ class SpeechTranscript extends React.Component{
                 <h3>{formatDate(speech.date)}: {speech.title}</h3>
                 <h4 className="transcript">Transcript</h4>
                 <p className="transcript-text" dangerouslySetInnerHTML={{__html: textFormatted}} />
-                {watsonDetailContainer}
+                <Loader loaded={props.loaded} >
+                    {watsonDetailContainer}
+                </Loader >
             </div>
         );
     }
@@ -92,7 +97,8 @@ const mapStateToProps = (state, props) => {
     return {
         speech: state.transcripts[props.match.params.speechid],
         president: state.presidents[props.match.params.presid - 1],
-        watson: state.watson
+        watson: state.watson,
+        loaded: state.loaded
     }
 };
 

@@ -4,4 +4,22 @@
         flex-direction: column;
     }
 
+    .watson-section-infobox, .graph-container {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 550px){
+    .graph-container {
+        padding: 10px;
+    }
+
+    .watson-section-infobox {
+        padding: 0 10px 20px 10px;
+    }
+
+    .infobox-header{
+        margin-bottom: 20px;
+    }
 }

@@ -51,12 +51,12 @@ class LandingPage extends React.Component {
                             <p>Targeted marketing</p>
                             <p>Customer care</p>
                             <p>Personal connections</p>
-                            <a href="https://www.ibm.com/watson/developercloud/doc/personality-insights/usecases.html" target="_blank">Learn more</a>
+                            <a href="https://www.ibm.com/watson/developercloud/doc/personality-insights/usecases.html" target="_blank" rel="noopener noreferrer">Learn more</a>
                         </div>
                     </div>
                 </section>
                 <footer>
-                    <a href="https://github.com/anhhtle/founding-speeches2" target="_blank"><img src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/github.png" alt="github" /></a>
+                    <a href="https://github.com/anhhtle/founding-speeches2" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/github.png" alt="github" /></a>
                 </footer>
             </div>
         )

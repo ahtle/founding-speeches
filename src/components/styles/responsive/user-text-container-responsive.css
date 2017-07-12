@@ -1,6 +1,13 @@
+@media only screen and (max-width: 600px) {
+    .user-text-container {
+        margin-top: 25px;
+    }
+}
+
+
 @media only screen and (max-width: 550px) {
     .user-text-container {
-        margin-top: 50px;
+        padding-top: 20px;
     }
 
     .grid {

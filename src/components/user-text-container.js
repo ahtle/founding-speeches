@@ -45,16 +45,16 @@ class UserTextContainer extends React.Component{
         this.props.actions.getWatsonInsight(input);
 
         setTimeout(() => {
-            // watson don't return input
-            if(this.props.watson.length === 0){
-                alert('Oops, something went wrong. Make sure to use at least 100 English words!');
+            // watson word count less than 100
+            if('error' in this.props.watson){
+                alert(this.props.watson.error.error);
+                this.props.actions.clearWatsonState();
             }
             // watson return input
             else {
-                console.log(this.props.watson);
                 this.toggleDisplay();
             }
-        }, 2500);
+        }, 2800);
     }
 
     liveWordCount(){
@@ -91,7 +91,7 @@ class UserTextContainer extends React.Component{
                     <p>Paste in any text you are interested in and see what Watson have to say about the writer's personality.</p>
                     <p>You will need at least 100 words, but the best analysis requires 6000 words or more.</p>
                     <div className="textarea-container">
-                        <textarea className="user-textarea" onChange={() => this.liveWordCount()} ref={input => this.text = input}></textarea>
+                        <textarea className="user-textarea" onChange={() => this.liveWordCount()} ref={input => this.text = input} placeholder="Enter your text..."></textarea>
                         <button className="user-text-button" onClick={() => this.handleWatsonClick()}>Analyze</button>
                         <p>Word count: <span id="word-count" className ={this.state.wordCountColor} >{this.state.wordCount}</span></p>
                     </div>

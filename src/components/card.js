@@ -26,7 +26,7 @@ export default class Card extends React.Component {
     };
 
     handleOnClick() {
-        this.props.history.push(`/detail/${this.props.id}`);
+        this.props.history.push(`/detail/${this.props.presId}`);
     };
 
     render() {
@@ -41,7 +41,7 @@ export default class Card extends React.Component {
                 <div className="card-img-container">
                     <img className={isMouseHovering ? "card-img-hover" : "card-img"} src={props.img} alt="thumbnail"/>
                     <span className={isMouseHovering ? "card-snippet-hover" : "card-snippet"} >"{props.snippet}"</span>
-                    <p className={isMouseHovering ? "hidden" : "card-id"}>{props.presId}</p>
+                    <p className={isMouseHovering ? "card-id-hover" : "card-id"}>{props.presId}</p>
                 </div>
                 <div className={isMouseHovering ? "card-info-hover" : "card-info"}>
                     <p className={isMouseHovering ? "hidden" : "card-date"}>{props.startYear} - {props.endYear}</p>

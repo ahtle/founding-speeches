@@ -30,7 +30,7 @@ class MainContainer extends React.Component{
 
         cards = props.presidents.map((president) => {
             return <Card history={props.history} img={president.thumbnail} startYear={president.startYear} endYear={president.endYear}
-                name={president.name} snippet={president.snippet} key={president.presId} id={president.presId} />
+                name={president.name} snippet={president.snippet} key={president.presId} presId={president.presId} />
         });
 
         return (

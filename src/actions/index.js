@@ -162,7 +162,11 @@ export function getWatsonInsight(text){
 
         fetch(url, fetchOptions)
         .then(response => response.json())
-        .then(watson => dispatch(getWatsonInsightSuccess(watson)))
+        .then((watson) => {
+            if(watson.code === 400)
+                return dispatch(getWatsonInsightSuccess(watson.error))
+            return dispatch(getWatsonInsightSuccess(watson));
+        })
         .catch(error => dispatch(getWatsonInsightFailure(error)));
 
     }
