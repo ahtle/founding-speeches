@@ -7,9 +7,6 @@ import './navigation-responsive.css';
 //export default class Navigation extends React.Component{
 
 export default function Navigation(props) {
-
-    console.log(props.location.pathname)
-
     let presidentClass;
     let userTextClass;
 
@@ -23,8 +20,6 @@ export default function Navigation(props) {
     }
 
     const url = props.location.pathname;
-    console.log(url.substring(0, 7));
-
 
     if (url.substring(0,7) === '/detail' ){
         presidentClass = 'not-active';

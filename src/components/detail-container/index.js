@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/';
-import {Link} from 'react-router-dom';
 import DetailBanner from './detail-banner/';
 import SpeechesList from './speeches-list/';
 import AddSpeechForm from './add-speech-form/';
@@ -61,7 +60,10 @@ class DetailContainer extends React.Component {
 
         // enable scrolling
         document.body.className="";
-        
+    }
+
+    deleteTranscript(id, index){
+        this.props.actions.deleteTranscript(id, index)
     }
 
     render() {
@@ -69,7 +71,8 @@ class DetailContainer extends React.Component {
         const props = this.props;
 
         const speechesList = props.transcripts.map((transcript, index) => {
-            return <SpeechesList history={props.history} date={transcript.date} title={transcript.title} key={index} presId={props.match.params.presid} id={index}/>
+            return <SpeechesList history={props.history} date={transcript.date} title={transcript.title} key={index}
+                    presId={props.match.params.presid} index={index} id={transcript._id} delete={(e) => this.deleteTranscript(transcript._id, index)} />
         });
         const { president = {} } = props;
         return (

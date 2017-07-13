@@ -51,8 +51,10 @@ export default (state = initialState, action) => {
                 loaded: true,
                 transcripts: action.payload
             };
-
+       
+        
         // post new transcript
+        
         case 'POST_TRANSCRIPT_REQUEST':
             return {
                 ...state,
@@ -67,12 +69,36 @@ export default (state = initialState, action) => {
                 loaded: true,
                 transcripts
             };
+
         case 'POST_TRANSCRIPT_FAILURE':
             return {
                 ...state,
                 loaded: true,
                 error: action.payload
             };
+        
+        // delete a transcript
+        
+        case 'DELETE_TRANSCRIPT_REQUEST':
+            return {
+                ...state,
+                loaded: false
+            };
+        
+        case 'DELETE_TRANSCRIPT_SUCCESS':
+            const transcriptsArr = state.transcripts.slice();    
+            transcriptsArr.splice(action.payload, 1);
+            return {
+                ...state,
+                loaded: true,
+                transcripts: transcriptsArr
+            }
+
+        case 'DELETE_TRANSCRIPT_FAILURE':
+            return {
+                ...state,
+                loaded: true
+            }
 
         // get Watson insight
         case 'WATSON_INSIGHT_REQUEST':
@@ -94,6 +120,7 @@ export default (state = initialState, action) => {
             };
         
         // clear Watson state
+
         case 'CLEAR_WATSON_STATE':
             return {
                 ...state,
@@ -102,6 +129,7 @@ export default (state = initialState, action) => {
             }
 
         // set loaded state
+
         case 'SET_STATE_LOADED':
             return {
                 ...state,

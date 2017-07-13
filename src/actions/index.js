@@ -123,6 +123,44 @@ export function postNewTranscript(transcript){
     }
 }
 
+/****************** delete a speech **********************/
+function deleteTranscriptRequest(){
+    return {
+        type: 'DELETE_TRANSCRIPT_REQUEST'
+    }
+}
+
+function deleteTranscriptSuccess(index){
+    return {
+        type: 'DELETE_TRANSCRIPT_SUCCESS',
+        payload: index
+    }
+}
+
+function deleteTranscriptFailure(error){
+    console.log('DELETE_TRANSCRIPT_FAILURE');
+    return {
+        type: 'DELETE_TRANSCRIPT_FAILURE',
+        payload: error
+    }
+}
+
+//action creator
+export function deleteTranscript(id, index){
+    return function (dispatch, getState){
+        dispatch(deleteTranscriptRequest());
+
+        fetch(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${id}`, {
+            method: 'DELETE'
+        })
+        .then(checkHttpStatus)
+        .then(() => {
+            dispatch(deleteTranscriptSuccess(index))
+        })
+        .catch(error => dispatch(deleteTranscriptFailure(error)));
+    }
+}
+
 //******** get watson speech profile analysis and add to state ************/
 function getWatsonInsightRequest(){
     return {

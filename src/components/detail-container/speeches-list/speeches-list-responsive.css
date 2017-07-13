@@ -4,14 +4,31 @@
         padding: 12px 0 12px 0;
     }
 
-    article p span {
+    article div {
+        flex-direction: column;
+        align-items: initial;
+    }
+
+    article div span {
         font-size: 12pt;
+    }
+
+    .title {
+        position: initial;
+    }
+
+    .delete-icon {
+        position: absolute;
+        right: 0;
+        top: 20%;
+        height: 20px;
+        margin-left: 10px;
     }
 }
 
 @media only screen and (max-width: 500px){
 
-    article p span {
+    article div span {
         font-size: 10pt;
     }
 

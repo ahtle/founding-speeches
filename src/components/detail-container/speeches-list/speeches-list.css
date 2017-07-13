@@ -3,17 +3,26 @@ article {
     padding: 20px 0 20px 0;
 }
 
-article p {
-    cursor: pointer;
+article div {
     position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.delete-icon {
+    height: 30px;
+    margin-left: 20px;
+    cursor: pointer;
 }
 
 span {
     color: #ec560a;
     font-size: 18pt;
+    cursor: pointer;
 }
 
-.date {
+.title {
     position: absolute;
-    right: 0;
+    left: 0;
 }
