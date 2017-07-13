@@ -1,0 +1,16 @@
+@media only screen and (max-width: 600px){
+    #detail-container {
+        margin-top: -10px;
+    }
+
+    .detail-speeches-list {
+        max-width: 1300px;
+        margin: 30px auto;
+        padding: 0 10px 0 10px;
+    }
+
+    .btn-add-speech {
+        font-size: 12pt;
+        padding: 3px 8px 3px 8px;
+    }
+}

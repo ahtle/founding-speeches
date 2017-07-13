@@ -1,0 +1,45 @@
+@media only screen and (max-width: 600px) {
+    .user-text-container {
+        margin-top: -10px;
+    }
+}
+
+
+@media only screen and (max-width: 550px) {
+    .user-text-container {
+        padding-top: 20px;
+    }
+
+    .grid {
+        padding: 0 10px 0 10px;
+    }
+
+    .grid > h3 {
+        font-size: 14pt;
+    }
+
+    .textarea-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .textarea-container > p {
+        font-size: 12pt;
+    }
+
+    #word-count {
+        font-size: 14pt;
+    }
+
+    .user-textarea {
+        height: 200px;
+        padding: 10px;
+        margin: 10px auto 10px;
+    }
+
+    .user-text-button {
+        width: 80px;
+        font-size: 12pt;
+    }
+}
