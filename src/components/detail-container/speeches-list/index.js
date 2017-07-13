@@ -12,7 +12,11 @@ export default function SpeechesList(props){
 
     return (
         <article>
-            <p onClick={() => handleOnClick()}><span className="title">{props.title}</span><span className="date">{formatDate(props.date)}</span> </p>
+            <div onClick={() => handleOnClick()}>
+                <img src="asd" alt="delete-icon"/>
+                <span className="title">{props.title}</span>
+                <span className="date">{formatDate(props.date)}</span>
+            </div>
         </article>
     );
 };
