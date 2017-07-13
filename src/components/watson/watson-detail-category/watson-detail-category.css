@@ -13,13 +13,17 @@
     padding: 20px;
 }
 
+.graph-container-header {
+    margin-bottom: 5px;
+}
+
 .graph-container-header:hover {
     cursor: pointer;
 }
 
 .graph-container-header-active {
     color: #ec560a;
-    fill: none;
+    margin-bottom: 5px;
 }
 
 .watson-section-infobox{

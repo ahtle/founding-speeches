@@ -33,7 +33,7 @@ class Chart extends React.Component {
             // scaleBand domain should be an array of specific values
             // in our case, we want to use movie titles
             .domain(data.map(d => d.name))
-            .rangeRound([svgDimensions.height, 0]).paddingInner(0.5);
+            .rangeRound([svgDimensions.height, 0]).paddingInner(0.4);
 
         // scaleLinear type
         const xScale = this.xScale

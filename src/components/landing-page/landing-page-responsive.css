@@ -1,3 +1,9 @@
+@media only screen and (max-width: 1400px){
+    .section-one{
+        background-size: initial;
+    }
+}
+
 @media only screen and (max-width: 860px){
 
     .section-one{

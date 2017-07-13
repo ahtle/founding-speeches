@@ -5,6 +5,7 @@
     height: 650px;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     background-position: center;
     background-position-y: -50px;
     background-color: #000;
