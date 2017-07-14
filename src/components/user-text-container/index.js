@@ -3,7 +3,7 @@ import WatsonDetailContainer from '../watson/';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/';
-import {wordCount} from '../../utils/';
+import {wordCount, scrollToTop} from '../../utils/';
 import Loader from 'react-loader';
 
 import './user-text-container.css';
@@ -52,6 +52,7 @@ class UserTextContainer extends React.Component{
             }
             // watson return input
             else {
+                scrollToTop(500);
                 this.toggleDisplay();
             }
         }, 2800);

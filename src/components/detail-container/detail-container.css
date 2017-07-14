@@ -10,11 +10,9 @@
     background-color: #ec560a;
     color: #fff;
     border-radius: 10pt;
+    margin-top: 20px;
 }
 
-.detail-container-nav {
-    position: relative;
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
+.hidden {
+    display: none;
 }

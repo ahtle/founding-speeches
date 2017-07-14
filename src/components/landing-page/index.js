@@ -12,19 +12,41 @@ class LandingPage extends React.Component {
     constructor(props, context){
         super(props);
 
+        this.state = {
+            showAdmin: false
+        }
     }
 
     componentDidMount(){
+        localStorage.setItem('admin', false);
         if(typeof this.props.president !== 'object') {
            this.props.actions.loadPresidents();
         }
     };
 
+    toogleAdminVisibility(){
+        this.setState({
+            showAdmin: !this.state.showAdmin
+        })
+    }
+
+    handleAdminLogin(e){
+        e.preventDefault();
+
+        if(this.adminPW.value === 'admin'){
+            localStorage.setItem('admin', true);
+            this.props.history.push(`/main/`);
+        }
+        else {
+            alert('Oops, try again');
+        }
+    }
+
     render() {
         return (
             <div className="landing-page-container">
                 <section className="section-one">
-                    <h3>In-depth Analysis of Presidential Speeches</h3>
+                    <h3>In-depth analysis of Founding Speeches</h3>
                 </section>
                 <div className="ibm-div">
                     <p>Powered by <span className="ibm">IBM Watson</span></p>
@@ -57,6 +79,14 @@ class LandingPage extends React.Component {
                 </section>
                 <footer>
                     <a href="https://github.com/anhhtle/founding-speeches2" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/github.png" alt="github" /></a>
+                    <div className={this.state.showAdmin ? "admin-show" : "admin"}>
+                        <p className={this.state.showAdmin ? "hidden" : ""} onClick={() => this.toogleAdminVisibility()}>Admin</p>
+                        <form className={this.state.showAdmin ? "admin-form" : "hidden"} onSubmit={(e) => this.handleAdminLogin(e)}>
+                            <input type="text" className={this.state.showAdmin ? "" : "hidden"} ref={input => this.adminPW = input}/>
+                            <input type="submit" className={this.state.showAdmin ? "" : "hidden"} />
+                            <button className={this.state.showAdmin ? "" : "hidden"} onClick={() => this.toogleAdminVisibility()}>Cancel</button>
+                        </form>
+                    </div>
                 </footer>
             </div>
         )
@@ -65,6 +95,7 @@ class LandingPage extends React.Component {
 
 const mapStateToProps = (state, props) => {
     return {
+        history: props.history,
         presidents: state.presidents
     }
 };

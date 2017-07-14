@@ -20,7 +20,8 @@ class DetailContainer extends React.Component {
 
         this.state = {
             isSpeechFormVisible: false,
-            reload: false
+            reload: false,
+            admin: localStorage.admin
         };
     }
 
@@ -67,23 +68,23 @@ class DetailContainer extends React.Component {
     }
 
     render() {
-        const { isSpeechFormVisible } = this.state;
+        const { isSpeechFormVisible, admin } = this.state;
         const props = this.props;
 
         const speechesList = props.transcripts.map((transcript, index) => {
             return <SpeechesList history={props.history} date={transcript.date} title={transcript.title} key={index}
                     presId={props.match.params.presid} index={index} id={transcript._id} delete={(e) => this.deleteTranscript(transcript._id, index)} />
         });
+
         const { president = {} } = props;
+
         return (
             <section id="detail-container">
                 <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} party={president.party} name={president.name} />
                 <Loader loaded={props.loaded} >
                     <section className="detail-speeches-list">
                         {speechesList}
-                        <div className="detail-container-nav">
-                            <button onClick={() => this.addSpeechFormOn()} className="btn-add-speech">Add a speech</button>
-                        </div>
+                        <button onClick={() => this.addSpeechFormOn()} className={admin === 'true' ? "btn-add-speech" : "hidden"} >Add a speech</button>
                     </section>
                 </ Loader>
                 {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.addSpeechFormOff()}/>}

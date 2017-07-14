@@ -134,3 +134,46 @@ footer > a {
 footer > a > img {
     height: 100%;
 }
+
+/*********** admin ***************/
+
+.admin {
+    color: #fff;
+    margin-left: 30px;
+    background-color: #ec560a;
+    border-radius: 15px;
+}
+
+.admin-show {
+    color: #fff;
+    margin-left: 30px;
+    background-color: #ec560a;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.admin > p {
+    padding: 10px;
+}
+
+.admin-form {
+    display: initial;
+    padding: 0;
+    background-color: #ec560a;
+}
+
+.admin-form > input[type="text"] {
+    height: 20px;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+.admin-form > input[type="submit"], .admin-form > button {
+    margin-right: 5px;
+    border: none;
+    background-color: #fff;
+}
+
+.hidden {
+    display: none;
+}
