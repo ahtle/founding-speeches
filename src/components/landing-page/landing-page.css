@@ -9,6 +9,7 @@
     background-position: center;
     background-position-y: -50px;
     background-color: #000;
+    font-family: 'Merriweather', serif;
 }
 
 .section-one > h3 {
@@ -27,6 +28,7 @@
     justify-content: center;
     align-items: center;
     font-size: 20pt;
+    font-family: 'Roboto', sans-serif;
 }
 
 .section-two{
@@ -38,7 +40,7 @@
     padding: 50px;
     color: #325c80;
     font-size: 20pt;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 .section-two > div {
@@ -66,6 +68,7 @@
     display: flex;
     height: 550px;
     font-size: 20pt;
+    font-family: 'Roboto', sans-serif;
 }
 
 .left {
@@ -139,14 +142,14 @@ footer > a > img {
 
 .admin {
     color: #fff;
-    margin-left: 30px;
+    margin-left: 60px;
     background-color: #ec560a;
     border-radius: 15px;
 }
 
 .admin-show {
     color: #fff;
-    margin-left: 30px;
+    margin-left: 50px;
     background-color: #ec560a;
     border-radius: 15px;
     padding: 10px;
@@ -168,7 +171,7 @@ footer > a > img {
     margin-right: 5px;
 }
 
-.admin-form > input[type="submit"], .admin-form > button {
+.admin-form > button[type="submit"], .admin-form > input[type="button"] {
     margin-right: 5px;
     border: none;
     background-color: #fff;

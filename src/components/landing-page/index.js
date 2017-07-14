@@ -28,6 +28,7 @@ class LandingPage extends React.Component {
         this.setState({
             showAdmin: !this.state.showAdmin
         })
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
     handleAdminLogin(e){
@@ -81,10 +82,10 @@ class LandingPage extends React.Component {
                     <a href="https://github.com/anhhtle/founding-speeches2" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/github.png" alt="github" /></a>
                     <div className={this.state.showAdmin ? "admin-show" : "admin"}>
                         <p className={this.state.showAdmin ? "hidden" : ""} onClick={() => this.toogleAdminVisibility()}>Admin</p>
-                        <form className={this.state.showAdmin ? "admin-form" : "hidden"} onSubmit={(e) => this.handleAdminLogin(e)}>
-                            <input type="text" className={this.state.showAdmin ? "" : "hidden"} ref={input => this.adminPW = input}/>
-                            <input type="submit" className={this.state.showAdmin ? "" : "hidden"} />
-                            <button className={this.state.showAdmin ? "" : "hidden"} onClick={() => this.toogleAdminVisibility()}>Cancel</button>
+                        <form className={this.state.showAdmin ? "admin-form" : "hidden"}>
+                            <input type="text" className={this.state.showAdmin ? "" : "hidden"} ref={input => this.adminPW = input} />
+                            <button type="submit" className={this.state.showAdmin ? "" : "hidden"} onClick={(e) => this.handleAdminLogin(e)}>OK</button>
+                            <input type="button" className={this.state.showAdmin ? "" : "hidden"} onClick={() => this.toogleAdminVisibility()} value="Cancel"/>
                         </form>
                     </div>
                 </footer>
@@ -108,3 +109,22 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
+
+// updateInput = val => this.setState({ inputVal: val })
+//   render() {
+//     return (
+//       <form>
+//         <input
+//           onChange={this.updateInput}
+//           type="text
+//           value={this.state.inputVal} />
+//         <button
+//           onClick={this.resetForm}
+//           type="button">Cancel</button>
+//         <button
+//           onClick={this.submitForm}
+//           type="submit">Submit</button>
+//       </form>
+//     )
+//   }
+// }

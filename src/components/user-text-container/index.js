@@ -22,6 +22,7 @@ class UserTextContainer extends React.Component{
 
     componentDidMount(){
         this.props.actions.setStateLoaded(true);
+        scrollToTop(400);
     };
 
     toggleDisplay(){
