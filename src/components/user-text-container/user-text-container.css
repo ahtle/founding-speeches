@@ -1,6 +1,7 @@
 .user-text-container{
     background-color: #f3f1f1;
     height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .grid {
@@ -9,11 +10,13 @@
     flex-direction: column;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f3f1f1;
 }
 
 .grid > h3 {
     margin-bottom: 20px;
     color: #ec560a;
+    font-family: 'Merriweather', serif;
 }
 
 .grid > p {
@@ -34,6 +37,7 @@
 .user-textarea {
     height: 400px;
     padding: 15px;
+    font-family: 'Merriweather', serif;
 }
 
 .user-text-button {

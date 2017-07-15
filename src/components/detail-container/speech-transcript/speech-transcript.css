@@ -1,11 +1,13 @@
 .transcript-container {
     margin: 40px;
     color: #020271;
+    font-family: 'Roboto', sans-serif;
 }
 
 .transcript-container > p {
     margin-bottom: 20px;
     font-size: 15pt;
+    font-family: 'Merriweather', serif;
 }
 
 .transcript-container > p a {
@@ -41,7 +43,8 @@
 }
 
 
-.transcript-text {
+#transcript-text {
     font-size: 15pt;
-    color: #565656
+    color: #565656;
+    font-family: 'Quintessential', cursive;
 }

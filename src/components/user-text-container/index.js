@@ -1,5 +1,5 @@
 import React from 'react';
-import WatsonDetailContainer from '../watson/';
+import WatsonDetailContainer from '../watson-container/';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/';
@@ -95,7 +95,7 @@ class UserTextContainer extends React.Component{
                     <div className="textarea-container">
                         <textarea className="user-textarea" onChange={() => this.liveWordCount()} ref={input => this.text = input} placeholder="Enter your text..."></textarea>
                         <button className="user-text-button" onClick={() => this.handleWatsonClick()}>Analyze</button>
-                        <p>Word count: <span id="word-count" className ={this.state.wordCountColor} >{this.state.wordCount}</span></p>
+                        <p>Word count *: <span id="word-count" className ={this.state.wordCountColor} >{this.state.wordCount}</span></p>
                     </div>
                     <Loader loaded={this.props.loaded} >
                         {watsonDetailContainer}

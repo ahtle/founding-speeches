@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import * as actions from '../../../actions/';
-import WatsonDetailContainer from '../../watson/';
+import WatsonDetailContainer from '../../watson-container/';
 import Loader from 'react-loader';
 
 import {scrollToTop, formatDate, wordCount} from '../../../utils';
@@ -85,7 +85,7 @@ class SpeechTranscript extends React.Component{
                 </div>
                 <h3>{formatDate(speech.date)}: {speech.title}</h3>
                 <h4 className="transcript">Transcript</h4>
-                <p className="transcript-text" dangerouslySetInnerHTML={{__html: textFormatted}} />
+                <p id="transcript-text" dangerouslySetInnerHTML={{__html: textFormatted}} />
                 <Loader loaded={props.loaded} >
                     {watsonDetailContainer}
                 </Loader >
