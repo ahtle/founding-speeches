@@ -31,7 +31,6 @@ class Chart extends React.Component {
         // scaleBand type
         const yScale = this.yScale
             // scaleBand domain should be an array of specific values
-            // in our case, we want to use movie titles
             .domain(data.map(d => d.name))
             .rangeRound([svgDimensions.height, 0]).paddingInner(0.4);
 
@@ -47,6 +46,8 @@ class Chart extends React.Component {
                     scales={{ xScale, yScale }}
                     margins={margins}
                     svgDimensions={svgDimensions}
+                    changeText={(text) => this.changeText(text)}
+                    category={this.props.category}
                 />
                 <Bars
                     scales={{ xScale, yScale }}

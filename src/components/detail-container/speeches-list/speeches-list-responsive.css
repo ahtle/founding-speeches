@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 700px){
 
     article {
         padding: 12px 0 12px 0;
@@ -11,6 +11,7 @@
 
     article div span {
         font-size: 12pt;
+        width: 90%;
     }
 
     .title {

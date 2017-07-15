@@ -21,9 +21,9 @@ export default class Bars extends Component {
     }
 
     className(id){
-        if(this.props.active === 'description')
+        if(this.props.active === 'description' || this.props.active !== id)
             return 'bar';
-        if(this.state.className === id)
+        if(this.state.className === id || this.props.active === id)
             return 'bar active';
         return 'bar';
     }
@@ -31,6 +31,8 @@ export default class Bars extends Component {
     render() {
         const { scales, margins, data } = this.props;
         const { xScale, yScale } = scales;
+
+        console.log(this.props.active);
 
         const bars = (
             data.map(datum =>

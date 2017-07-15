@@ -25,14 +25,14 @@ class WatsonDetailCategory extends React.Component{
 
     render(){
         const props = this.props;
-        let text = this.state.text[this.props.category][this.state.display];
+        let text = this.state.text[props.category][this.state.display];
         
         return(
             <section className="watson-section-container">
                 <div className="flexbox">
                     <div className="graph-container">
                         <h4 className={this.state.display === 'description' ? 'graph-container-header-active': 'graph-container-header'} onClick={() => this.changeText('description')}>{this.state.text[props.category].title}</h4>
-                        <Chart data={props.data} changeText={(text) => this.changeText(text)} active={this.state.display}/>
+                        <Chart data={props.data} changeText={(text) => this.changeText(text)} active={this.state.display} category={props.category}/>
                     </div>
                     <div className="watson-section-infobox" >
                         <div className="infobox-header">

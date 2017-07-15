@@ -307,7 +307,6 @@ class WatsonDetailContainer extends React.Component{
                     <WatsonDetailCategory category="personality" data={props.watson.personality} />
                     <WatsonDetailCategory category="needs" data={props.watson.needs} />
                     <WatsonDetailCategory category="values" data={props.watson.values} />
-                    {/*<WatsonDetailCategory category="values" data={props.watson.values} />*/}
                 </div>
             </div>
         )

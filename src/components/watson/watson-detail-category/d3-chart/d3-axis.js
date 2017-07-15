@@ -1,16 +1,23 @@
 import React from 'react';
 import * as d3Axis from 'd3-axis';
-import { select as d3Select } from 'd3-selection';
+import { select, selectAll } from 'd3-selection';
 
 import './d3-axis.css';
 
 export default class Axis extends React.Component {
+
     componentDidMount() {
-        this.renderAxis()
+        this.renderAxis();
+
     }
 
     componentDidUpdate() {
-        this.renderAxis()
+        this.renderAxis();
+    }
+
+    handleClick(text){
+        if(this.props.changeText)
+            this.props.changeText(text);
     }
 
     renderAxis() {
@@ -18,18 +25,22 @@ export default class Axis extends React.Component {
         const axis = d3Axis[axisType]()
             .scale(this.props.scale);
 
-        d3Select(this.axisElement).call(axis)
+        select(this.axisElement).call(axis);
+        
+        selectAll(`.${this.props.category} .tick`)
+            .on('click', (d) => {
+                this.handleClick(d)
+            });
     }
 
     render() {
+
         return (
+
             <g
-                className={`Axis Axis-${this.props.orient}`}
+                className={`Axis Axis-${this.props.orient} ${this.props.category}`}
                 ref={(el) => { this.axisElement = el; }}
                 transform={this.props.translate}
-                onClick={() => {
-                    console.log(this.axisElement);
-                }}
             />
         )
     }
