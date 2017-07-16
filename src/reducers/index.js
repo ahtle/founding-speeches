@@ -1,13 +1,10 @@
 import { sortByDate } from '../utils';
-// import { combineReducers } from 'redux';
-// import watson from './watson';
 
 const initialState = {
     presidents: [],
     transcripts: [],
     watson: [],
-    loaded: false,
-    error : null,
+    loaded: false
 };
 
 export default (state = initialState, action) => {
@@ -73,8 +70,7 @@ export default (state = initialState, action) => {
         case 'POST_TRANSCRIPT_FAILURE':
             return {
                 ...state,
-                loaded: true,
-                error: action.payload
+                loaded: true
             };
         
         // delete a transcript
@@ -141,8 +137,3 @@ export default (state = initialState, action) => {
     }
 
 };
-
-// export default combineReducers({
-//   ...rootReducer,
-//   watson: watson
-// });

@@ -1,20 +1,20 @@
 import { parseJSON, checkHttpStatus } from '../utils';
 //***** load presidents from server and add to state ********/
 
-function loadPresidentsRequest(){
+export function loadPresidentsRequest(){
     return {
         type: 'LOAD_PRESIDENTS_REQUEST',
     };
 }
 
-function loadPresidentsSuccess(list){
+export function loadPresidentsSuccess(list){
     return {
         type: 'LOAD_PRESIDENTS_SUCCESS',
         payload: list
     }
 }
 
-function loadPresidentsFailure(error){
+export function loadPresidentsFailure(error){
     return {
         type: 'LOAD_PRESIDENTS_FAILURE',
         payload: error
@@ -33,7 +33,6 @@ export function loadPresidents(){
                 return dispatch(loadPresidentsSuccess(presidents));
             })
             .catch((error) => {
-                console.error(error);
                 return dispatch(loadPresidentsFailure(error));
             });
     }
@@ -41,20 +40,20 @@ export function loadPresidents(){
 
 /************** load president speech transcripts *******/
 
-function loadPresidentTranscriptsRequest(){
+export function loadPresidentTranscriptsRequest(){
     return {
         type: 'LOAD_PRESIDENT_TRANSCRIPTS_REQUEST',
     };
 }
 
-function loadPresidentTranscriptsSuccess(list){
+export function loadPresidentTranscriptsSuccess(list){
     return {
         type: 'LOAD_PRESIDENT_TRANSCRIPTS_SUCCESS',
         payload: list
     }
 }
 
-function loadPresidentsTranscriptsFailure(error){
+export function loadPresidentsTranscriptsFailure(error){
     return {
         type: 'LOAD_PRESIDENT_TRANSCRIPTS_FAILURE',
         payload: error
@@ -74,28 +73,26 @@ export function loadPresidentTranscripts(url){
                 return dispatch(loadPresidentTranscriptsSuccess(transcripts));
             })
             .catch((error) => {
-                console.error(error);
                 return dispatch(loadPresidentsTranscriptsFailure(error));
             });
     }
 }
 
 /****************** post new speech *******************/
-function postTranscriptRequest(){
+export function postTranscriptRequest(){
     return {
         type: 'POST_TRANSCRIPT_REQUEST'
     }
 }
 
-function postTranscriptSuccess(transcript){
+export function postTranscriptSuccess(transcript){
     return {
         type: 'POST_TRANSCRIPT_SUCCESS',
         payload: transcript
     }
 }
 
-function postTranscriptFailure(error){
-    console.log('POST_TRANSCRIPT_FAILURE');
+export function postTranscriptFailure(error){
     return {
         type: 'POST_TRANSCRIPT_FAILURE',
         payload: error
@@ -124,21 +121,20 @@ export function postNewTranscript(transcript){
 }
 
 /****************** delete a speech **********************/
-function deleteTranscriptRequest(){
+export function deleteTranscriptRequest(){
     return {
         type: 'DELETE_TRANSCRIPT_REQUEST'
     }
 }
 
-function deleteTranscriptSuccess(index){
+export function deleteTranscriptSuccess(index){
     return {
         type: 'DELETE_TRANSCRIPT_SUCCESS',
         payload: index
     }
 }
 
-function deleteTranscriptFailure(error){
-    console.log('DELETE_TRANSCRIPT_FAILURE');
+export function deleteTranscriptFailure(error){
     return {
         type: 'DELETE_TRANSCRIPT_FAILURE',
         payload: error
@@ -162,20 +158,20 @@ export function deleteTranscript(id, index){
 }
 
 //******** get watson speech profile analysis and add to state ************/
-function getWatsonInsightRequest(){
+export function getWatsonInsightRequest(){
     return {
         type: 'WATSON_INSIGHT_REQUEST'
     }
 }
 
-function getWatsonInsightSuccess(watson){
+export function getWatsonInsightSuccess(watson){
     return {
         type: 'WATSON_INSIGHT_SUCCESS',
         payload: watson
     }
 }
 
-function getWatsonInsightFailure(error){
+export function getWatsonInsightFailure(error){
     return {
         type: 'WATSON_INSIGHT_FAILURE',
         payload: error
@@ -211,7 +207,7 @@ export function getWatsonInsight(text){
 }
 
 //*************** clear watson state ************************
-function clearWatsonStateAction(){
+export function clearWatsonStateAction(){
     return {
         type: 'CLEAR_WATSON_STATE'
     }
@@ -224,7 +220,7 @@ export function clearWatsonState(){
 }
 
 //************** set state.loaded ********************
-function stateLoadedAction(loaded){
+export function stateLoadedAction(loaded){
     return {
         type: 'SET_STATE_LOADED',
         payload: loaded
