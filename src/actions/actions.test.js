@@ -6,7 +6,7 @@ import {
     getWatsonInsightRequest, getWatsonInsightSuccess, getWatsonInsightFailure,
     clearWatsonStateAction, clearWatsonState,
     stateLoadedAction
-} from '../actions/';
+} from './index';
 
 // load presidents
 describe('loadPresidentsRequest', () => {

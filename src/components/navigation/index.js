@@ -4,34 +4,37 @@ import { Link } from 'react-router-dom';
 import './navigation.css';
 import './navigation-responsive.css';
 
-//export default class Navigation extends React.Component{
+class Navigation extends React.Component {
 
-export default function Navigation(props) {
-    let presidentClass;
-    let userTextClass;
+    render(){
+        let presidentClass;
+        let userTextClass;
 
-    if (props.match.params.userText === undefined) {
-        presidentClass = 'active';
-        userTextClass = 'not-active';
+        if (this.props.match.params.userText === undefined) {
+            presidentClass = 'active';
+            userTextClass = 'not-active';
+        }
+        else {
+            presidentClass = 'not-active';
+            userTextClass = 'active';
+        }
+
+        const url = this.props.location.pathname;
+
+        if (url.substring(0,7) === '/detail' ){
+            presidentClass = 'not-active';
+            userTextClass = 'not-active';
+        }
+
+        return (
+            <nav>
+                <ul>
+                    <li className={presidentClass} ><Link to="/main">Presidents</Link></li>
+                    <li className={userTextClass} ><Link to="/main/userText">Your own text</Link></li>
+                </ul>
+            </nav>
+        );
     }
-    else {
-        presidentClass = 'not-active';
-        userTextClass = 'active';
-    }
-
-    const url = props.location.pathname;
-
-    if (url.substring(0,7) === '/detail' ){
-        presidentClass = 'not-active';
-        userTextClass = 'not-active';
-    }
-
-    return (
-        <nav>
-            <ul>
-                <li className={presidentClass} ><Link to="/main">Presidents</Link></li>
-                <li className={userTextClass} ><Link to="/main/userText">Your own text</Link></li>
-            </ul>
-        </nav>
-    );
 };
+
+export default Navigation;

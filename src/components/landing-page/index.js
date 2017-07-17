@@ -7,7 +7,7 @@ import * as actions from '../../actions/';
 import './landing-page.css';
 import './landing-page-responsive.css';
 
-class LandingPage extends React.Component {
+export class LandingPage extends React.Component {
 
     constructor(props, context){
         super(props);
@@ -109,22 +109,3 @@ const mapDispatchToProps = (dispatch, props) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);
-
-// updateInput = val => this.setState({ inputVal: val })
-//   render() {
-//     return (
-//       <form>
-//         <input
-//           onChange={this.updateInput}
-//           type="text
-//           value={this.state.inputVal} />
-//         <button
-//           onClick={this.resetForm}
-//           type="button">Cancel</button>
-//         <button
-//           onClick={this.submitForm}
-//           type="submit">Submit</button>
-//       </form>
-//     )
-//   }
-// }

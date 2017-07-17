@@ -9,7 +9,7 @@ import Loader from 'react-loader';
 import './main-container.css';
 import './main-container-responsive.css';
 
-class MainContainer extends React.Component{
+export class MainContainer extends React.Component{
     constructor(props, context){
         super(props);
 
