@@ -17,7 +17,7 @@ article div {
     cursor: pointer;
 }
 
-span {
+.title, .date {
     color: #ec560a;
     font-size: 18pt;
     cursor: pointer;

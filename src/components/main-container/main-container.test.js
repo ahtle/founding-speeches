@@ -1,6 +1,5 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-
 import {MainContainer} from './index';
 
 
@@ -19,4 +18,10 @@ describe('<Header />', () => {
     it('render without crashing', () => {
         shallow(<MainContainer presidents={presidents}/>);
     });
+
+    it('render Card and Loader component', () => {
+        const wrapper = shallow(<MainContainer presidents={presidents}/>);
+        expect(wrapper.find('Card').exists()).toEqual(true);
+    });
+
 });
