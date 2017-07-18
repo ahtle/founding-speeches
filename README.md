@@ -6,7 +6,7 @@ This web app houses an extensive database of US presidents and their speech tran
 
 ## Working version and screenshot
 Use this link to try the app for yourself! https://founding-speeches.herokuapp.com/
-![alt tag](https://github.com/anhhtle/Friend-Alert/blob/master/public/images/screenshot.jpg)
+![alt tag](https://github.com/anhhtle/founding-speeches/blob/master/public/img/screenshot.jpg)
 
 ## Technology
 This is a MERN stack.
