@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './watson-detail-container.css';
 import './watson-detail-container-responsive.css';
 
-class WatsonDetailContainer extends React.Component{
+export class WatsonDetailContainer extends React.Component{
     constructor(props){
         super(props);
 

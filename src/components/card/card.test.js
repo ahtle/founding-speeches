@@ -22,7 +22,7 @@ describe('<Card />', () => {
         expect(wrapper.find('.card-name').exists()).toEqual(true);
     });
 
-    it('render card-img-hover, card-snippet-hover, card-id-hover, card-info-hover, hidden, and card-name-hover when mouse is hovering', () => {
+    it('change class names when mouse is hovering', () => {
         const wrapper = shallow(<Card />);
         wrapper.instance().handleMouseEnter();
         expect(wrapper.find('.card-img-hover').exists()).toEqual(true);
@@ -31,6 +31,12 @@ describe('<Card />', () => {
         expect(wrapper.find('.card-info-hover').exists()).toEqual(true);
         expect(wrapper.find('.card-name-hover').exists()).toEqual(true);
         expect(wrapper.find('.hidden').exists()).toEqual(true);
+        expect(wrapper.find('.card-date').exists()).toEqual(false);
+        expect(wrapper.find('.card-img').exists()).toEqual(false);
+        expect(wrapper.find('.card-snippet').exists()).toEqual(false);
+        expect(wrapper.find('.card-id').exists()).toEqual(false);
+        expect(wrapper.find('.card-info').exists()).toEqual(false);
+        expect(wrapper.find('.card-name').exists()).toEqual(false);
     });
 
 });

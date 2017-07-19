@@ -24,7 +24,7 @@ export class MainContainer extends React.Component{
     };
 
     render(){
-        const props = this.props
+        let props = this.props;
 
         let cards;
 

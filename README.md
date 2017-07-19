@@ -13,7 +13,7 @@ Use this link to try the app for yourself! https://founding-speeches.herokuapp.c
 This is a MERN stack.
 
 ### Client
-The front-end is coded with HTML and CSS and runs with Javascript framework React.js. Unit testing with Enzyme and Mocha. Continuous integration with Travis CI and deploys to Heroku. Personality analysis is done with IBM Watson Personality Insight. The data is graphed with d3.js for easy visualization.
+The front-end is coded with HTML and CSS and runs with Javascript framework React.js. Unit testing with Enzyme. Continuous integration with Travis CI and deploys to Heroku. Personality analysis is done with IBM Watson Personality Insight. The data is graphed with d3.js for easy visualization.
 
 The app is fully responsive with flexbox.
 

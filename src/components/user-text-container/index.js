@@ -1,15 +1,16 @@
 import React from 'react';
-import WatsonDetailContainer from '../watson-container/';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/';
 import {wordCount, scrollToTop} from '../../utils/';
 import Loader from 'react-loader';
 
-import './user-text-container.css';
-import './user-text-container-responsive.css'
+import WatsonDetailContainer from '../watson-container/';
 
-class UserTextContainer extends React.Component{
+import './user-text-container.css';
+import './user-text-container-responsive.css';
+
+export class UserTextContainer extends React.Component{
     constructor(props, context){
         super(props);
 

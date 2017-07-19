@@ -13,7 +13,7 @@ import './detail-container.css';
 import './detail-container-responsive.css';
 
 
-class DetailContainer extends React.Component {
+export class DetailContainer extends React.Component {
 
     constructor(props, context) {
         super(props, context);

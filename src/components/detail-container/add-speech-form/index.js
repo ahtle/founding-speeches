@@ -7,7 +7,7 @@ import * as actions from '../../../actions/';
 import './add-speech-form.css';
 import './add-speech-form-responsive.css';
 
-class AddSpeechForm extends React.Component {
+export class AddSpeechForm extends React.Component {
     constructor(props, context){
         super(props);
 
