@@ -11,7 +11,7 @@ import {scrollToTop, formatDate, wordCount} from '../../../utils';
 import './speech-transcript.css';
 import './speech-transcript-responsive.css';
 
-class SpeechTranscript extends React.Component{
+export class SpeechTranscript extends React.Component{
     constructor(props, context){
         super(props);
 

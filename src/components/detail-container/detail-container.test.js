@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import { DetailContainer } from './index';
 import SpeechesList from './speeches-list/';
 import { AddSpeechForm } from './add-speech-form/';
