@@ -18,7 +18,7 @@ export class LandingPage extends React.Component {
     }
 
     componentDidMount(){
-        localStorage.setItem('admin', false);
+        sessionStorage.setItem('admin', false);
         if(typeof this.props.president !== 'object') {
            this.props.actions.loadPresidents();
         }
@@ -35,7 +35,7 @@ export class LandingPage extends React.Component {
         e.preventDefault();
 
         if(this.adminPW.value === 'admin'){
-            localStorage.setItem('admin', true);
+            sessionStorage.setItem('admin', true);
             this.props.history.push(`/main/`);
         }
         else {

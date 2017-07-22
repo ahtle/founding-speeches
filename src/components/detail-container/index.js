@@ -21,7 +21,7 @@ export class DetailContainer extends React.Component {
         this.state = {
             isSpeechFormVisible: false,
             reload: false,
-            admin: localStorage.admin
+            admin: sessionStorage.admin
         };
     }
 

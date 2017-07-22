@@ -92,6 +92,9 @@
 .center > p {
     position: absolute;
     top: 20%;
+    padding-left: inherit;
+    padding-right: inherit;
+    left: 0;
 }
 
 .center > a, .bottom > a {

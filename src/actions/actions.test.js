@@ -160,16 +160,6 @@ describe('clearWatsonStateAction', () => {
     });
 });
 
-// describe('clearWatsonState', () => {
-//     it('Should dispatch clearWatsonStateAction', () => {
-        
-//         const dispatch = jest.fn();
-
-//         return clearWatsonState().then(() => {
-//             expect(dispatch).toHaveBeenCalledWith(clearWatsonStateAction());
-//         })
-//     })
-// })
 
 // set loaded spinner
 describe('stateLoadedAction', () => {
@@ -178,27 +168,3 @@ describe('stateLoadedAction', () => {
         expect(action.type).toEqual('SET_STATE_LOADED');
     });
 });
-
-
-// describe('fetchBoard', () => {
-//     it('Should dispatch fetchBoardSuccess', () => {
-//         const board = {
-//             lists: []
-//         };
-
-//         global.fetch = jest.fn().mockImplementation(() =>
-//             Promise.resolve({
-//                 ok: true,
-//                 json() {
-//                     return board;
-//                 }
-//             })
-//         );
-
-//         const dispatch = jest.fn();
-//         return fetchBoard()(dispatch).then(() => {
-//             expect(fetch).toHaveBeenCalledWith('/board');
-//             expect(dispatch).toHaveBeenCalledWith(fetchBoardSuccess(board));
-//         });
-//     });
-// });

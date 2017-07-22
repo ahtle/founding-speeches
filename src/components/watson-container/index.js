@@ -269,7 +269,7 @@ export class WatsonDetailContainer extends React.Component{
         const wordCount = props.watson.word_count;
 
         let analysisStrength = 'Weak Analysis';
-        let wordCountInfobox = "With this many words, you can't get a fair read on someone's personality. Can you use at least 1500 to get a general impression?";
+        let wordCountInfobox = "With this many words, you can't get a fair read on someone's personality. Need at least 1500 to get a general impression.";
         let wordCountColor = 'red';
         
         if(wordCount >= 1200 && wordCount < 3500){
@@ -279,7 +279,7 @@ export class WatsonDetailContainer extends React.Component{
         }
         else if(wordCount >= 3500 && wordCount < 6000){
             analysisStrength = 'Strong Analysis';
-            wordCountInfobox = "This is a confident read of someone's personality. It's statistically significant! ...but wait, there's more! For only 6000 words, you'll get something so accurate it's scary. Do it!";
+            wordCountInfobox = "This is a confident read of someone's personality. It's statistically significant! Get to 6000 words for the best possible assessment.";
             wordCountColor = 'green';
         }
         else if(wordCount >= 6000){
@@ -301,8 +301,8 @@ export class WatsonDetailContainer extends React.Component{
                     <h3>Personality Portrait</h3>
                     <p className="word-count">{wordCount} words analyzed: <span className={wordCountColor} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>{analysisStrength}</span></p>
                     <div className={show}>
-                        <div className="arrow-up"></div>
-                        <div className="word-count-infobox">{wordCountInfobox}</div>
+                        <div className={"arrow-up " + wordCountColor + "-arrow"}></div>
+                        <div className={"word-count-infobox " + wordCountColor + "-background"}>{wordCountInfobox}</div>
                     </div>
                     <WatsonDetailCategory category="personality" data={props.watson.personality} />
                     <WatsonDetailCategory category="needs" data={props.watson.needs} />

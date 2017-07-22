@@ -19,7 +19,7 @@ export default function SpeechesList(props){
     return (
         <article>
             <div>
-                <img className={localStorage.admin === "true" ? "delete-icon" : "hidden"} onClick={() => handleDelete()} src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/delete-icon.png" alt="delete-icon"/>
+                <img className={sessionStorage.admin === "true" ? "delete-icon" : "hidden"} onClick={() => handleDelete()} src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/delete-icon.png" alt="delete-icon"/>
                 <span className="title" onClick={() => handleOnClick()} >{props.title}</span>
                 <span className="date" onClick={() => handleOnClick()} >{formatDate(props.date)}</span>
             </div>

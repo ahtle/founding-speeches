@@ -32,8 +32,6 @@ export default class Bars extends Component {
         const { scales, margins, data } = this.props;
         const { xScale, yScale } = scales;
 
-        console.log(this.props.active);
-
         const bars = (
             data.map(datum =>
                 <rect

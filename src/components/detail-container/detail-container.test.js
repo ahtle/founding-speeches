@@ -6,7 +6,7 @@ import { AddSpeechForm } from './add-speech-form/';
 import DetailBanner from './detail-banner/';
 
 describe('<DetailContainer />', () => {
-    window.localStorage = {admin: 'admin'};
+    window.sessionStorage = {admin: 'admin'};
 
     const transcripts = [{
         presId: 1,

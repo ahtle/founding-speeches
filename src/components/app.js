@@ -23,6 +23,7 @@ export default function App() {
             <Route path="/detail/" component={Header}/>
             <Route path="/detail/" component={Navigation}/>
             <Route exact path="/detail/:presid" component={DetailContainer} />
+            <Route path="/transcript/" component={Header}/>
             <Route exact path="/transcript/:presid/:speechid" component={SpeechTranscript} />
         </div>
     );

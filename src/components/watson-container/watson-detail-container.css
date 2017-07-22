@@ -50,7 +50,7 @@
     flex-direction: column;
     align-items: center;
     top: 120px;
-    left: 95px;
+    left: 160px;
     color: #fff;
     width: 270px;
 }
@@ -60,7 +60,6 @@
     height: 0; 
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 15px solid #00b4a0;
 }
 
 .word-count-infobox{
@@ -69,17 +68,41 @@
     padding: 15px;
 }
 
-/******* word count color **********/
+/******* color **********/
 .red {
-    color: red;
+    color: #ff0606;
+}
+
+.red-background {
+    background-color: #ff0606;
+}
+
+.red-arrow {
+    border-bottom: 15px solid #ff0606;
 }
 
 .grey {
     color: #777677;
 }
 
+.grey-background {
+    background-color: #777677;
+}
+
+.grey-arrow {
+    border-bottom: 15px solid #777677;
+}
+
 .green {
     color: #00b4a0;
+}
+
+.green-background {
+    background-color: #00b4a0;
+}
+
+.green-arrow {
+    border-bottom: 15px solid #00b4a0;
 }
 
 /******* noscroll for body *********/
