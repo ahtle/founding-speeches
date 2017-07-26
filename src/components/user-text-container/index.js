@@ -96,7 +96,7 @@ export class UserTextContainer extends React.Component{
                     <div className="textarea-container">
                         <textarea className="user-textarea" onChange={() => this.liveWordCount()} ref={input => this.text = input} placeholder="Enter your text..."></textarea>
                         <button className="user-text-button" onClick={() => this.handleWatsonClick()}>Analyze</button>
-                        <p>Word count *: <span id="word-count" className ={this.state.wordCountColor} >{this.state.wordCount}</span></p>
+                        <p>Word count*: <span id="word-count" className ={this.state.wordCountColor} >{this.state.wordCount}</span></p>
                     </div>
                     <Loader loaded={this.props.loaded} >
                         {watsonDetailContainer}
@@ -116,8 +116,8 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        watson: state.watson,
-        loaded: state.loaded
+        watson: state.watson.watson,
+        loaded: state.watson.loaded
     }
 };
 

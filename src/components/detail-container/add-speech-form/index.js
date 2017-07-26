@@ -64,7 +64,7 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        transcripts: state.transcripts 
+        transcripts: state.transcripts.transcripts
     }
 }
 

@@ -1,192 +1,122 @@
-import reducers from '../reducers/';
-import { loadPresidentsRequest, loadPresidentsSuccess, loadPresidentsFailure,
-    loadPresidentTranscriptsRequest, postTranscriptRequest, loadPresidentTranscriptsSuccess,
-    loadPresidentsTranscriptsFailure, postTranscriptSuccess, deleteTranscriptSuccess,
-    stateLoadedAction, clearWatsonStateAction } from '../actions/';
+import { LIFECYCLE, KEY } from 'redux-pack';
+import reducers from '../reducers/combineReducers';
+import { clearWatsonState, setStateLoaded } from '../actions/';
+
+function makePackAction(lifecycle, { type, payload, meta={} }) {
+    return {
+        type,
+        payload,
+        meta: {
+            ...meta,
+            [KEY.LIFECYCLE]: lifecycle,
+        },
+    }
+}
+
+const initialState = {
+    presidents: { presidents: [], presidents_error: false, loaded: false },
+    transcripts: { transcripts: [], transcripts_error: false, loaded: false },
+    watson: { watson: [], watson_error: false, loaded: false },
+}
 
 describe('reducer', () => {
-    // dummy data
-    const initialState = {
-        presidents: [],
-        transcripts: [],
-        watson: [],
-        loaded: false
-    };
+    it('test', () => {
+        expect(true).toEqual(true);
+    });
 
     it('Should set initial state when nothing is passed in', () => {
-        const state = reducers(undefined, {type: '__UNKNOW'});
+        const state = reducers(undefined, {type: '__UNKNOWN'});
         expect(state).toEqual(initialState);
     });
 
-    it('Should return the current state on an unknown action', () => {
+    it('Should return initial state on an unknown action', () => {
         let currentState = {};
         const state = reducers(currentState, {type: '__UNKNOWN'});
-        expect(state).toBe(currentState);
+        expect(state).toEqual(initialState);
     });
 
-    // load presidents
-    describe('loadPresidentsRequest', () => {
-        it('Should change loaded state on request', () => {
-            const testState = {
-                presidents: [],
-                transcripts: [],
-                watson: [],
-                loaded: true
-            };
+    describe('loadPresidents', () => {
+        it('Should change loaded state on request', () => {         
+            let action = makePackAction(LIFECYCLE.SUCCESS, { type: 'LOAD_PRESIDENTS', payload: [{presId: 1, name: 'George'}] });
+            let state = reducers(initialState, action);
             
-            let state = reducers(testState, loadPresidentsRequest());
+            expect(state).toEqual({
+                ...initialState,
+                presidents: { presidents: action.payload, presidents_error: false, loaded: true }
+            });
+
+        });
+    });
+
+    describe('loadPresidentTranscripts', () => {
+        it('Should change loaded state on request', () => {         
+            let action = makePackAction(LIFECYCLE.SUCCESS, { type: 'LOAD_PRESIDENT_TRANSCRIPTS', payload: [{presId: 1, text: 'text'}] });
+            let state = reducers(initialState, action);
+            
+            expect(state).toEqual({
+                ...initialState,
+                transcripts: { transcripts: action.payload, transcripts_error: false, loaded: true }
+            });
+
+        });
+    });
+
+    describe('postNewTranscript', () => {
+        it('Should change loaded state on request', () => {         
+            let action = makePackAction(LIFECYCLE.SUCCESS, { type: 'POST_NEW_TRANSCRIPT', payload: {presId: 1, text: 'text'} });
+            let state = reducers(initialState, action);
+            
+            expect(state).toEqual({
+                ...initialState,
+                transcripts: { transcripts: [action.payload], transcripts_error: false, loaded: true }
+            });
+
+        });
+    });
+
+    describe('deleteTranscript', () => {
+        it('Should change loaded state on request', () => {
+            
+            const testState = {
+                ...initialState,
+                transcripts: { transcripts: [{presId: 1, text: 'text1'}, {presId: 1, text: 'text2'}], transcripts_error: false, loaded: true }
+            }
+
+            let action = makePackAction(LIFECYCLE.SUCCESS, { type: 'DELETE_TRANSCRIPT', payload: 1 });
+            let state = reducers(testState, action);
             
             expect(state).toEqual({
                 ...testState,
-                loaded: false
+                transcripts: { transcripts: [{presId: 1, text: 'text1'}], transcripts_error: false, loaded: true }
             });
+
         });
     });
 
-    describe('loadPresidentsSuccess', () => {
-        it('Should return list of presidents', () => {
-            let presidents = [{presId: 1, name: 'George Washington'}];
-
-            let state = reducers(initialState, loadPresidentsSuccess(presidents));
-            expect(state).toEqual({
-                ...initialState,
-                presidents,
-                loaded: true
-            });
-        });
-    });
-
-    describe('loadPresidentsFailure', () => {
-        it('Should return error object on failure', () => {
-            let error = {error: 'error msg'};
-
-            let state = reducers(initialState, loadPresidentsFailure(error));
-            expect(state).toEqual({
-                ...initialState,
-                presidents: error,
-                loaded: true
-            });
-        });
-    });
-
-    // load transcripts
-    describe('loadPresidentTranscriptsRequest', () => {
-        it('Should change loaded state on request', () => {
-            
-            let state = reducers({...initialState, loaded: true}, loadPresidentTranscriptsRequest());
-            
-            expect(state).toEqual({
-                ...initialState,
-                loaded: false
-            });
-        });
-    });
-
-    describe('loadPresidentTranscriptsSuccess', () => {
-        it('Should return list of transcripts', () => {
-            let transcripts = [{text: 'text', title: 'title', date: new Date()}];
-
-            let state = reducers(initialState, loadPresidentTranscriptsSuccess(transcripts));
-
-            expect(state).toEqual({
-                ...initialState,
-                transcripts,
-                loaded: true
-            });
-        });
-    });
-
-    describe('loadPresidentsTranscriptsFailure', () => {
-        it('Should return error object on failure', () => {
-            let error = {error: 'error msg'};
-
-            let state = reducers(initialState, loadPresidentsTranscriptsFailure(error));
-            expect(state).toEqual({
-                ...initialState,
-                transcripts: error,
-                loaded: true
-            });
-        });
-    });
-
-    // post transcript
-    describe('postTranscriptRequest', () => {
-        it('Should change loaded state on request', () => {
-
-            let state = reducers({...initialState, loaded: true}, postTranscriptRequest());
-            
-            expect(state).toEqual({
-                ...initialState,
-                loaded: false
-            });
-        });
-    });
-
-    describe('postTranscriptSuccess', () => {
-        it('Should add new transcript', () => {
-            let transcripts = [{presId: 1, date: new Date(), title: 'title', text: 'text'}];
-
-            let state = reducers(initialState, postTranscriptSuccess(transcripts));
-            expect(state).toEqual({
-                ...initialState,
-                transcripts: [transcripts],
-                loaded: true
-            });
-        });
-    });
-
-    // delete transcript
-    describe('deleteTranscriptSuccess', () => {
-        it('Should change return deleted transcript', () => {
-
-            const transcripts = [{transcript: 1}, {transcript: 2}, {transcript: 3}];
-
-            const testState = {
-                presidents: [],
-                transcripts: transcripts,
-                watson: [],
-                loaded: false
-            };
-
-            let state = reducers(testState, deleteTranscriptSuccess(1));
-            
-            expect(state).toEqual({
-                ...testState,
-                transcripts: [{transcript: 1}, {transcript: 3}],
-                loaded: true
-            });
-        });
-    });
-
-    // clear watson state
-    describe('clearWatsonStateAction', () => {
+    describe('clearWatsonState', () => {
         it('Should clear watson state', () => {
-            const watsonState = {someValue: 1};
             const testState = {
-                presidents: [],
-                transcripts: [],
-                watson: [watsonState],
-                loaded: false
+                ...initialState,
+                watson: { watson: [{test: 'test'}], watson_error: false, loaded: false },
             };
 
-            let state = reducers(testState, clearWatsonStateAction());
+            let state = reducers(testState, clearWatsonState());
             expect(state).toEqual({
                 ...initialState,
-                loaded: true
+                watson: { watson: [], watson_error: false, loaded: true }
             });
         });
     });
 
-    // change loaded state
-    describe('stateLoadedAction', () => {
+    describe('setStateLoaded', () => {
         it('Should change loaded state', () => {
 
             const random_boolean = Math.random() >= 0.5;
 
-            let state = reducers(initialState, stateLoadedAction(random_boolean));
+            let state = reducers(initialState, setStateLoaded(random_boolean));
             expect(state).toEqual({
                 ...initialState,
-                loaded: random_boolean
+                watson: { watson: [], watson_error: false, loaded: random_boolean }
             });
         });
     });

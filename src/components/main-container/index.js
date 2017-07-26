@@ -20,6 +20,10 @@ export class MainContainer extends React.Component{
             this.props.actions.loadPresidents();
         }
 
+        if(this.props.error !== false){
+            alert('Oops, something is wrong. Please try again another time');
+        }
+
         scrollToTop(10);
     };
 
@@ -48,8 +52,9 @@ export class MainContainer extends React.Component{
 const mapStateToProps = (state, props) => {
     return {
         history: props.history,
-        presidents: state.presidents,
-        loaded: state.loaded
+        presidents: state.presidents.presidents,
+        error: state.presidents.presidents_error,
+        loaded: state.presidents.loaded
     }
 };
 

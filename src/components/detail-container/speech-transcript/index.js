@@ -24,10 +24,17 @@ export class SpeechTranscript extends React.Component{
         // position page on top
         scrollToTop(1);
 
+        this.props.actions.setStateLoaded(true);
+
         if(typeof this.props.president !== 'object'){
             this.props.actions.loadPresidents();
             this.props.actions.loadPresidentTranscripts(`https://founding-speeches-server.herokuapp.com/api/v1/transcripts/${this.props.match.params.presid}`);
         }
+
+        if(this.props.president_error !== false || this.props.speech_error !== false){
+            alert('Oops, something is wrong. Please try again another time');
+        }
+        
     }
 
     toggleDisplay(){
@@ -103,10 +110,12 @@ const mapDispatchToProps = (dispatch, props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        speech: state.transcripts[props.match.params.speechid],
-        president: state.presidents[props.match.params.presid - 1],
-        watson: state.watson,
-        loaded: state.loaded
+        speech: state.transcripts.transcripts[props.match.params.speechid],
+        speech_error: state.transcripts.transcripts_error,
+        president: state.presidents.presidents[props.match.params.presid - 1],
+        president_error: state.presidents.presidents_error,
+        watson: state.watson.watson,
+        loaded: state.watson.loaded
     }
 };
 

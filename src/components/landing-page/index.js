@@ -97,7 +97,7 @@ export class LandingPage extends React.Component {
 const mapStateToProps = (state, props) => {
     return {
         history: props.history,
-        presidents: state.presidents
+        presidents: state.presidents.presidents
     }
 };
 

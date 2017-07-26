@@ -104,9 +104,9 @@ const mapStateToProps = (state, props) => {
     const id = props.match.params.presid;
     return {
         history: props.history,
-        president: state.presidents[id - 1],
-        transcripts: state.transcripts,
-        loaded: state.loaded
+        president: state.presidents.presidents[id - 1],
+        transcripts: state.transcripts.transcripts,
+        loaded: state.transcripts.loaded
     };
 };
 

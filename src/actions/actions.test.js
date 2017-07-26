@@ -1,170 +1,73 @@
-import {
-    loadPresidentsRequest, loadPresidentsSuccess, loadPresidentsFailure,
-    loadPresidentTranscriptsRequest, loadPresidentTranscriptsSuccess, loadPresidentsTranscriptsFailure,
-    postTranscriptRequest, postTranscriptSuccess, postTranscriptFailure,
-    deleteTranscriptRequest, deleteTranscriptSuccess, deleteTranscriptFailure,
-    getWatsonInsightRequest, getWatsonInsightSuccess, getWatsonInsightFailure,
-    clearWatsonStateAction, clearWatsonState,
-    stateLoadedAction
-} from './index';
+import { LIFECYCLE, KEY } from 'redux-pack';
 
-// load presidents
-describe('loadPresidentsRequest', () => {
-    it('Should return the action', () => {
-        const action = loadPresidentsRequest();
-        expect(action.type).toEqual('LOAD_PRESIDENTS_REQUEST');
-    });
+import { loadPresidents, loadPresidentTranscripts, postNewTranscript,
+         deleteTranscript, getWatsonInsight, clearWatsonState, setStateLoaded } from './index';
+
+function makePackAction(lifecycle, { type, payload, meta={} }) {
+    return {
+        type,
+        payload,
+        meta: {
+            ...meta,
+            [KEY.LIFECYCLE]: lifecycle,
+        },
+    }
+}
+
+describe('loadPresidents', () => {
+    it('Should return correct type and promise response', () => {
+        const action = makePackAction(LIFECYCLE.START, { type: 'LOAD_PRESIDENTS', payload: [{presId: 1, name: 'George'}] });
+        expect(action.type).toEqual('LOAD_PRESIDENTS');
+        expect(action.payload).toEqual([{presId: 1, name: 'George'}]);
+    })
 });
 
-describe('loadPresidentsSuccess', () => {
-    it('Should return the action', () => {
-        const data = [{
-            presId: 1,
-            name: 'George Washington'
-        }];
-        const action = loadPresidentsSuccess(data);
-        expect(action.type).toEqual('LOAD_PRESIDENTS_SUCCESS');
-        expect(action.payload).toEqual(data);
-    });
+describe('loadPresidentTranscripts', () => {
+    it('Should return correct type and promise response', () => {
+        const action = makePackAction(LIFECYCLE.START, { type: 'LOAD_PRESIDENT_TRANSCRIPTS', payload: [{presId: 1, text: 'text'}] });
+        expect(action.type).toEqual('LOAD_PRESIDENT_TRANSCRIPTS');
+        expect(action.payload).toEqual([{presId: 1, text: 'text'}]);
+    })
 });
 
-describe('loadPresidentsFailure', () => {
-    it('Should return the action', () => {
-        const error = [];
-        const action = loadPresidentsFailure(error);
-        expect(action.type).toEqual('LOAD_PRESIDENTS_FAILURE');
-        expect(action.payload).toEqual(error);
-    });
+describe('postNewTranscript', () => {
+    it('Should return correct type and promise response', () => {
+        const action = makePackAction(LIFECYCLE.START, { type: 'POST_NEW_TRANSCRIPT', payload: {presId: 1, text: 'text'} });
+        expect(action.type).toEqual('POST_NEW_TRANSCRIPT');
+        expect(action.payload).toEqual({presId: 1, text: 'text'});
+    })
 });
 
-// load president transcripts
-describe('loadPresidentTranscriptsRequest', () => {
-    it('Should return the action', () => {
-        const action = loadPresidentTranscriptsRequest();
-        expect(action.type).toEqual('LOAD_PRESIDENT_TRANSCRIPTS_REQUEST');
-    });
+describe('deleteTranscript', () => {
+    it('Should return correct type and promise response', () => {
+        const action = makePackAction(LIFECYCLE.START, { type: 'DELETE_TRANSCRIPT', payload: 1 });
+        expect(action.type).toEqual('DELETE_TRANSCRIPT');
+        expect(action.payload).toEqual(1);
+    })
 });
 
-describe('loadPresidentTranscriptsSuccess', () => {
-    it('Should return the action', () => {
-        const data = [{
-            presId: 1,
-            text: 'Some text'
-        }];
-        const action = loadPresidentTranscriptsSuccess(data);
-        expect(action.type).toEqual('LOAD_PRESIDENT_TRANSCRIPTS_SUCCESS');
-        expect(action.payload).toEqual(data);
-    });
-});
-
-describe('loadPresidentsTranscriptsFailure', () => {
-    it('Should return the action', () => {
-        const error = [];
-        const action = loadPresidentsTranscriptsFailure(error);
-        expect(action.type).toEqual('LOAD_PRESIDENT_TRANSCRIPTS_FAILURE');
-        expect(action.payload).toEqual(error);
-    });
-});
-
-// post new speech
-describe('postTranscriptRequest', () => {
-    it('Should return the action', () => {
-        const action = postTranscriptRequest();
-        expect(action.type).toEqual('POST_TRANSCRIPT_REQUEST');
-    });
-});
-
-describe('postTranscriptSuccess', () => {
-    it('Should return the action', () => {
-        const data = [{
-            presId: 1,
-            text: 'Some text'
-        }];
-        const action = postTranscriptSuccess(data);
-        expect(action.type).toEqual('POST_TRANSCRIPT_SUCCESS');
-        expect(action.payload).toEqual(data);
-    });
-});
-
-describe('postTranscriptFailure', () => {
-    it('Should return the action', () => {
-        const error = [];
-        const action = postTranscriptFailure(error);
-        expect(action.type).toEqual('POST_TRANSCRIPT_FAILURE');
-        expect(action.payload).toEqual(error);
-    });
-});
-
-// delete a speech
-describe('deleteTranscriptRequest', () => {
-    it('Should return the action', () => {
-        const action = deleteTranscriptRequest();
-        expect(action.type).toEqual('DELETE_TRANSCRIPT_REQUEST');
-    });
-});
-
-describe('deleteTranscriptSuccess', () => {
-    it('Should return the action', () => {
-        const index = 1;
-        const action = deleteTranscriptSuccess(index);
-        expect(action.type).toEqual('DELETE_TRANSCRIPT_SUCCESS');
-        expect(action.payload).toEqual(index);
-    });
-});
-
-describe('deleteTranscriptFailure', () => {
-    it('Should return the action', () => {
-        const error = [];
-        const action = deleteTranscriptFailure(error);
-        expect(action.type).toEqual('DELETE_TRANSCRIPT_FAILURE');
-        expect(action.payload).toEqual(error);
-    });
-});
-
-// get watson profile
-describe('getWatsonInsightRequest', () => {
-    it('Should return the action', () => {
-        const action = getWatsonInsightRequest();
-        expect(action.type).toEqual('WATSON_INSIGHT_REQUEST');
-    });
-});
-
-describe('getWatsonInsightSuccess', () => {
-    it('Should return the action', () => {
-        const watson = [{
-            personality: [],
-            needs: [],
-            watson: []
-        }];
-
-        const action = getWatsonInsightSuccess(watson);
-        expect(action.type).toEqual('WATSON_INSIGHT_SUCCESS');
-        expect(action.payload).toEqual(watson);
-    });
-});
-
-describe('getWatsonInsightFailure', () => {
-    it('Should return the action', () => {
-        const error = {error: 'error msg'};
-        const action = getWatsonInsightFailure(error);
-        expect(action.type).toEqual('WATSON_INSIGHT_FAILURE');
-        expect(action.payload).toEqual(error);
-    });
+describe('getWatsonInsight', () => {
+    it('Should return correct type and promise response', () => {
+        const action = makePackAction(LIFECYCLE.START, { type: 'GET_WATSON_INSIGHT', payload: {personality: [], needs: [], values: []} });
+        expect(action.type).toEqual('GET_WATSON_INSIGHT');
+        expect(action.payload).toEqual({personality: [], needs: [], values: []} );
+    })
 });
 
 // clear watson profile
-describe('clearWatsonStateAction', () => {
+describe('clearWatsonState', () => {
     it('Should return the action', () => {
-        const action = clearWatsonStateAction();
+        const action = clearWatsonState();
         expect(action.type).toEqual('CLEAR_WATSON_STATE');
     });
 });
 
-
 // set loaded spinner
-describe('stateLoadedAction', () => {
+describe('setStateLoaded', () => {
     it('Should return the action', () => {
-        const action = stateLoadedAction();
+        const random_boolean = Math.random() >= 0.5;
+        const action = setStateLoaded(random_boolean);
         expect(action.type).toEqual('SET_STATE_LOADED');
+        expect(action.payload).toEqual(random_boolean);
     });
 });

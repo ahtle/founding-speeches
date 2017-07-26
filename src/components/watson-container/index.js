@@ -315,8 +315,8 @@ export class WatsonDetailContainer extends React.Component{
 
 const mapStateToProps = (state, props) => {
     return {
-        word_count: state.watson.word_count,
-        watson: state.watson
+        word_count: state.watson.watson.word_count,
+        watson: state.watson.watson
     }
 }
 
