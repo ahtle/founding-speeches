@@ -1,5 +1,5 @@
 # "Founding Speeches" 
-In-depht analysis of presidential speeches.
+In-depht analysis of famous presidential speeches.
 
 ## Overview
 This web app houses an extensive database of US presidents and their speech transcripts. Not only can the user quickly find the important speeches throughout history, the transcripts are also analyzied by IBM Watson's Personality Insight to return the president's Big Five personality attributes, Needs, and Values. Furthermore, the user can try the Watson API on their own text of choice.
