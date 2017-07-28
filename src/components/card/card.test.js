@@ -5,7 +5,8 @@ import Card from './index';
 
 describe('<Card />', () => {
     const props = {
-        history: []
+        history: [],
+        presId: 1
     }
 
     it('render without crashing', () => {

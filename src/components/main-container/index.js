@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/';
 import {scrollToTop} from '../../utils';
-import Loader from 'react-loader';
 
 import './main-container.css';
 import './main-container-responsive.css';
@@ -40,9 +39,7 @@ export class MainContainer extends React.Component{
         return (
             <section className="main-container">
                 <div className="main-grid">
-                    <Loader loaded={props.loaded} >
-                        {cards}
-                    </Loader >
+                    {cards}
                 </div>
             </section>
         );
