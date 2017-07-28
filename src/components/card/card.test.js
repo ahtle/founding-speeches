@@ -1,12 +1,11 @@
 import React from 'react';
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import Card from './index';
 
 
 describe('<Card />', () => {
     const props = {
-        history: [],
-        presId: 1
+        history: []
     }
 
     it('render without crashing', () => {

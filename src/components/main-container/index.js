@@ -40,9 +40,9 @@ export class MainContainer extends React.Component{
         return (
             <section className="main-container">
                 <div className="main-grid">
-                    <Loader loaded={props.loaded}>
+                    <Loader loaded={props.loaded} >
                         {cards}
-                    </Loader>
+                    </Loader >
                 </div>
             </section>
         );
