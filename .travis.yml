@@ -9,3 +9,4 @@ deploy:
   app: founding-speeches
   on:
     repo: anhhtle/founding-speeches
+  skip_cleanup: true
