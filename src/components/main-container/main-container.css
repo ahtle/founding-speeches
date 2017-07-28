@@ -7,6 +7,12 @@
     margin: 0 auto;
     max-width: 1150px;
     padding: 30px 15px 30px 15px;
+    /* flex-wrap: wrap;
+    justify-content: flex-start; */
+}
+
+.main-grid > .loadedContent {
+    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
