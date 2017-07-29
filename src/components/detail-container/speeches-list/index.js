@@ -15,13 +15,22 @@ export default function SpeechesList(props){
             props.delete();
         }
     }
+    
+    let date;
+
+    console.log(props.date);
+
+    if(props.date){
+        date = (<span className="date" onClick={() => handleOnClick()} >{formatDate(props.date)}</span>);
+    };
 
     return (
         <article>
             <div>
                 <img className={sessionStorage.admin === "true" ? "delete-icon" : "hidden"} onClick={() => handleDelete()} src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/delete-icon.png" alt="delete-icon"/>
+                
                 <span className="title" onClick={() => handleOnClick()} >{props.title}</span>
-                <span className="date" onClick={() => handleOnClick()} >{formatDate(props.date)}</span>
+                {date};
             </div>
         </article>
     );

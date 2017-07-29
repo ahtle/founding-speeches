@@ -26,6 +26,7 @@ export class DetailContainer extends React.Component {
     }
 
     componentDidMount(){
+        if(!this.props.actions) return;
         if(typeof this.props.president !== 'object') {
            this.props.actions.loadPresidents();
         }
@@ -82,11 +83,11 @@ export class DetailContainer extends React.Component {
             <section id="detail-container">
                 <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} party={president.party} name={president.name} />
                 <Loader loaded={props.loaded} >
+                </ Loader>
                     <section className="detail-speeches-list">
                         {speechesList}
-                        <button onClick={() => this.addSpeechFormOn()} className={admin === 'true' ? "btn-add-speech" : "hidden"} >Add a speech</button>
+                        <button id='detail-button' onClick={() => this.addSpeechFormOn()} className={admin === 'true' ? "btn-add-speech" : "hidden"} >Add a speech</button>
                     </section>
-                </ Loader>
                 {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.addSpeechFormOff()}/>}
             </section>
         );

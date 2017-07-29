@@ -14,7 +14,8 @@ export function parseJSON(response) {
 }
 
 export function formatDate(input) {
-  return moment(input.substring(0, 10)).format('LL');
+  if(input)
+    return moment(input.substring(0, 10)).format('LL');
 }
 
 export function sortByDate(list) {
