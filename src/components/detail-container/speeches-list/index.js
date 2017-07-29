@@ -18,8 +18,6 @@ export default function SpeechesList(props){
     
     let date;
 
-    console.log(props.date);
-
     if(props.date){
         date = (<span className="date" onClick={() => handleOnClick()} >{formatDate(props.date)}</span>);
     };
