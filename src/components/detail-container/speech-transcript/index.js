@@ -68,7 +68,7 @@ export class SpeechTranscript extends React.Component{
             else {
                 this.toggleDisplay();
             }
-        }, 2800);
+        }, 2000);
 
     }
 
