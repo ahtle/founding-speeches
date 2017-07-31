@@ -19,6 +19,7 @@ export class LandingPage extends React.Component {
 
     componentDidMount(){
         sessionStorage.setItem('admin', false);
+        document.body.className="";
         if(typeof this.props.president !== 'object') {
            this.props.actions.loadPresidents();
         }

@@ -12,7 +12,7 @@ export default function watsonReducer(state = initialState, action){
        
         case 'GET_WATSON_INSIGHT':
             return handle(state, action, {
-                start: (previousState) => ({ ...previousState, loaded: false }),
+                start: (previousState) => ({ ...previousState, watson_error: false, loaded: false }),
                 success: (previousState) => ({ ...previousState, watson: action.payload, watson_error: false, loaded: true }),
                 failure: (previousState) => ({ ...previousState, watson_error: true, loaded: true })
             });

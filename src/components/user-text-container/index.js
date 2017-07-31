@@ -19,12 +19,29 @@ export class UserTextContainer extends React.Component{
             wordCount: 0,
             wordCountColor: 'red'
         }
+
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     componentDidMount(){
         this.props.actions.setStateLoaded(true);
         scrollToTop(400);
+
+        // function for window resize
+        window.addEventListener('resize', this.updateWindowDimensions);
     };
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        if(window.innerWidth <= 600 && this.state.showWatsonInsight === true){
+            document.body.className="noscroll";
+        }
+        else
+            document.body.className="";
+    }
 
     toggleDisplay(){
         this.setState({
@@ -55,7 +72,7 @@ export class UserTextContainer extends React.Component{
             // watson return input
             else {
                 scrollToTop(500);
-                this.toggleDisplay();
+                this.toggleDisplay();                
             }
         }, 2800);
     }

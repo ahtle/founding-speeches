@@ -1,6 +1,5 @@
 .user-text-container{
-    background-color: #f3f1f1;
-    height: 100%;
+    max-height: 1000px;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -10,7 +9,6 @@
     flex-direction: column;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f3f1f1;
 }
 
 .grid > h3 {

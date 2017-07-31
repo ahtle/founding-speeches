@@ -1,21 +1,23 @@
 .transcript-container {
-    margin: 40px;
+    /* margin: 40px; */
     color: #020271;
     font-family: 'Roboto', sans-serif;
+    /*  */
+    display: flex;
 }
 
-.transcript-container > p {
+.transcript-section > p {
     margin-bottom: 20px;
     font-size: 15pt;
     font-family: 'Merriweather', serif;
 }
 
-.transcript-container > p a {
+.transcript-section > p a {
     text-decoration: none;
     color: #ec560a;
 }
 
-.transcript-container > h3 {
+.transcript-section > h3 {
     margin-bottom: 40px;
     font-size: 28pt;
 }
@@ -47,4 +49,62 @@
     font-size: 15pt;
     color: #565656;
     font-family: 'Quintessential', cursive;
+}
+
+/*  */
+.transcript-section {
+    width: 50%;
+    padding: 20px;
+}
+
+.watson-section {
+    position: relative;
+    width: 50%;
+}
+
+.max-width {
+    padding: 40px;
+    width: 100%;
+}
+
+.watson-button-container-hidden {
+    display: none;
+}
+
+.watson-section-hidden{
+    display: none;
+}
+
+/* watson error  */
+.watson-status-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.watson-status {
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #e5e5e5;
+    padding: 10px;
+}
+
+.watson-status > p {
+    color: #ec560a;
+    margin-bottom: 20px;
+}
+
+.x {
+    position: absolute;
+    color: #fff;
+    background-color: #ec560a;
+    padding: 2px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 10pt;
 }

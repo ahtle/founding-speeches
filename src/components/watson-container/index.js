@@ -10,6 +10,7 @@ export class WatsonDetailContainer extends React.Component{
         super(props);
 
         this.state = {
+            showWatson: true,
             showInfobox: false,
             word_count: 3500,
             personality: [
@@ -45,7 +46,7 @@ export class WatsonDetailContainer extends React.Component{
                 },
                 {
                     "name": "Conscientiousness",
-                    "percentile": "86",
+                    "percentile": "100",
                     "children": [
                         {
                             "name": "Cautiousness",
@@ -75,7 +76,7 @@ export class WatsonDetailContainer extends React.Component{
                 },
                 {
                     "name": "Emotional range",
-                    "percentile": "79",
+                    "percentile": "100",
                     "children": [
                         {
                             "name": "Self-consciousness",
@@ -105,7 +106,7 @@ export class WatsonDetailContainer extends React.Component{
                 },
                 {
                     "name": "Agreeableness",
-                    "percentile": "71",
+                    "percentile": "100",
                     "children": [
                         {
                             "name": "Sympathy",
@@ -135,7 +136,7 @@ export class WatsonDetailContainer extends React.Component{
                 },
                 {
                     "name": "Extraversion",
-                    "percentile": "11",
+                    "percentile": "100",
                     "children": [
                         {
                             "name": "Assertiveness",
@@ -241,10 +242,6 @@ export class WatsonDetailContainer extends React.Component{
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
     }
 
-    componentDidMount(){
-        document.body.className="noscroll";
-    }
-
     closeContainer(){
 
         if(this.props.toggleDisplay)
@@ -265,8 +262,20 @@ export class WatsonDetailContainer extends React.Component{
     }
 
     render(){
-        const props = this.props;
-        const wordCount = props.watson.word_count;
+
+        let url = window.location.href;
+
+        let watsonContainerBackgroundClass;
+
+        if(url.indexOf('main') > -1 ) {
+            watsonContainerBackgroundClass = 'watson-container-background userText';
+        }
+        else {
+            watsonContainerBackgroundClass = 'watson-container-background ';
+        }
+
+        // const props = this.props;
+        const wordCount = this.props.word_count;
 
         let analysisStrength = 'Weak Analysis';
         let wordCountInfobox = "With this many words, you can't get a fair read on someone's personality. Need at least 1500 to get a general impression.";
@@ -294,8 +303,19 @@ export class WatsonDetailContainer extends React.Component{
         else
             show = 'word-count-infobox-container'
 
+        let details;
+        if(this.props.watson.personality){
+            details = (<div>
+                <WatsonDetailCategory category="personality" data={this.props.watson.personality} />
+                <WatsonDetailCategory category="needs" data={this.props.watson.needs} />
+                <WatsonDetailCategory category="values" data={this.props.watson.values} />
+            </div>)
+        }
+
+
         return(
-            <div className="watson-container-background" >
+
+            <div className={watsonContainerBackgroundClass} >
                 <div className="watson-container">
                     <div className='x' onClick={() => this.closeContainer()}>X</div>
                     <h3>Personality Portrait</h3>
@@ -304,9 +324,7 @@ export class WatsonDetailContainer extends React.Component{
                         <div className={"arrow-up " + wordCountColor + "-arrow"}></div>
                         <div className={"word-count-infobox " + wordCountColor + "-background"}>{wordCountInfobox}</div>
                     </div>
-                    <WatsonDetailCategory category="personality" data={props.watson.personality} />
-                    <WatsonDetailCategory category="needs" data={props.watson.needs} />
-                    <WatsonDetailCategory category="values" data={props.watson.values} />
+                    { details }
                 </div>
             </div>
         )
