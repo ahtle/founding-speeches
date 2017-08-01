@@ -23,4 +23,12 @@ describe('<UserTextContainer />', () => {
         expect(wrapper.find(WatsonDetailContainer).exists()).toEqual(true);
     });
 
+    it('call function on click', () => {
+        const callback = jest.fn();
+        const wrapper = shallow(<UserTextContainer onClick={callback} />);
+        wrapper.instance().handleWatsonClick = callback;
+        wrapper.find('.user-text-button').simulate('click');
+        expect(callback).toHaveBeenCalled();
+    });
+
 });

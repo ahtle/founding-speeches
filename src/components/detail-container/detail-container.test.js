@@ -42,4 +42,5 @@ describe('<DetailContainer />', () => {
         wrapper.find('#detail-button').simulate('click');
         expect(callback).toHaveBeenCalled();
     });
+
 });

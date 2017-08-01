@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import * as actions from '../../../actions/';
 import WatsonDetailContainer from '../../watson-container/';
-// import Loader from 'react-loader';
 
 import {scrollToTop, formatDate} from '../../../utils';
 

@@ -82,12 +82,12 @@ export class DetailContainer extends React.Component {
         return (
             <section id="detail-container">
                 <DetailBanner banner={president.banner} startYear={president.startYear} endYear={president.endYear} party={president.party} name={president.name} />
-                <Loader loaded={props.loaded} >
-                </ Loader>
-                    <section className="detail-speeches-list">
+                <section className="detail-speeches-list">
+                    <Loader loaded={props.loaded} >
                         {speechesList}
-                        <button id='detail-button' onClick={() => this.addSpeechFormOn()} className={admin === 'true' ? "btn-add-speech" : "hidden"} >Add a speech</button>
-                    </section>
+                    </ Loader>
+                    <button id='detail-button' onClick={() => this.addSpeechFormOn()} className={admin === 'true' ? "btn-add-speech" : "hidden"} >Add a speech</button>
+                </section>
                 {(isSpeechFormVisible && president.presId) && <AddSpeechForm presId={props.president.presId} onClose={() => this.addSpeechFormOff()}/>}
             </section>
         );

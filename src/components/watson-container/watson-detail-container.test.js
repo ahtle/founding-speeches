@@ -31,4 +31,12 @@ describe('<WatsonDetailContainer />', () => {
         expect(wrapper.state().showInfobox).toEqual(false);
     });
 
+    it('call function on click', () => {
+        const callback = jest.fn();
+        const wrapper = shallow(<WatsonDetailContainer watson={watson} callback={callback}/>);
+        wrapper.instance().closeContainer = callback;
+        wrapper.find('.x').simulate('click');
+        expect(callback).toHaveBeenCalled();
+    });
+
 });
