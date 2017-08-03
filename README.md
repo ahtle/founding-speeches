@@ -2,7 +2,7 @@
 In-depht analysis of presidential speeches.
 
 ## Overview
-This web app houses an extensive database of US presidents and their speech transcripts. Not only can the user quickly find the important speeches throughout history, the transcripts are also analyzied by IBM Watson's Personality Insight to return the president's Big Five personality attributes, Needs, and Values. Furthermore, the user can try the Watson API on their own text of choice.
+This web app houses an extensive database of US presidents and their speech transcripts. Not only can the user quickly find the important speeches throughout history, the transcripts are also analyzed by IBM Watson's Personality Insight to return the president's Big Five personality attributes, Needs, and Values. Furthermore, the user can try the Watson API on their own text of choice.
 
 ## Watson Analysis
 Watson's Personality Insight specializes in analyzing conversational texts. While this app is only meant to offer some fun/interesting insight on the possible personality of our presidents, there are a wide range of real-world use cases for Personality Insight, including: targeted marketing, personal connections, and customer care. To learn more, visit https://www.ibm.com/watson/developercloud/doc/personality-insights/usecases.html.
