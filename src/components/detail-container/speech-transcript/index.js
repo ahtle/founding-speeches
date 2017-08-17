@@ -115,7 +115,7 @@ export class SpeechTranscript extends React.Component{
         return(
             <div className="transcript-container">
                 <section className={this.state.showWatsonInsight ? "transcript-section" : "transcript-section max-width"}>
-                    <p><Link to={`/detail/${props.match.params.presid}`}>{president.name}</Link> Precidency</p>
+                    <p><Link to={`/detail/${props.match.params.presid}`}>{president.name}</Link> Presidency</p>
                     <div className={this.state.showWatsonInsight ? "watson-button-container-hidden" : "watson-button-container"}>
                         <input className="transcript-container-img" type="image" alt="watson-icon" src="https://raw.githubusercontent.com/anhhtle/founding-speeches2/master/public/img/watson_logo.png" onClick={() => this.handleWatsonClick(speech.text)} />
                         <p onClick={() => this.handleWatsonClick(speech.text)}>IBM Watson</p>

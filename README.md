@@ -1,4 +1,4 @@
-# "Founding Speeches" 
+# "Founding Speeches"  [![Build Status](https://travis-ci.org/anhhtle/founding-speeches.svg?branch=master)](https://travis-ci.org/anhhtle/founding-speeches)
 In-depht analysis of presidential speeches.
 
 ## Overview
